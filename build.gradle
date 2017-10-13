@@ -36,12 +36,26 @@ dependencies {
 }
 
 
+/* Global testconfiguration */
 test {
+    /* Set system property for JVM(s) */
     systemProperties 'property': 'value'
+    
+    /* enable testng support (default is junit) */
 	useTestNG() {
 		suiteXmlFiles << new File("src/test/resources/testng.xml")
 		// !!! testng.xml added by myself
 	}
+
+	// show standard out and standard error of the test JVM(s) on the console
+	testLogging.showStandardStreams = true
+
+	// set heap size for the test JVM(s)
+	minHeapSize = "128m"
+	maxHeapSize = "512m"
+
+	// set JVM arguments for the test JVM(s)
+	jvmArgs '-XX:MaxPermSize=256m'
 }
 
 
