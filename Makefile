@@ -7,7 +7,7 @@
 # Define Variables
 G=gradle
 GW=./gradlew
-GGWOPTS=
+GGWOPTS=-i
 
 MAINNAME=
 
@@ -16,19 +16,18 @@ MAINNAME=
 
 all: clean build wrap
 
-bulid:
+build:
 	${G} ${GGWOPTS} build
 	# Get wrapper libs
 	${G} ${GGWOPTS} wrapper
 
 wrap:
-	${GW} eclipse assemble
+	${GW} ${GGWOPTS} eclipse assemble
 
 clean:
 	${G} ${GGWOPTS} cleanEclipse
 	${G} ${GGWOPTS} assemble
 	${G} ${GGWOPTS} clean
-
 
 # ----------------------
 
