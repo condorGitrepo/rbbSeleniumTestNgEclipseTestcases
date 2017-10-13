@@ -39,7 +39,8 @@ dependencies {
 test {
     systemProperties 'property': 'value'
 	useTestNG() {
-		suiteXmlFiles << new File("src/test/resources/testing.xml")
+		suiteXmlFiles << new File("src/test/resources/testng.xml")
+		// !!! testng.xml added by myself
 	}
 }
 
