@@ -25,9 +25,6 @@ dependencies {
 	//compoile fileTree(dir: 'libs', include: '*.jar')
 }
 
-test {
-    systemProperties 'property': 'value'
-}
 
 uploadArchives {
     repositories {
@@ -38,10 +35,13 @@ uploadArchives {
 }
 
 test {
+    systemProperties 'property': 'value'
 	useTestNG() {
 		suiteXmlFiles << new File("src/test/resources/testing.xml")
 	}
 }
+
+/* --- --- */
 
 task wrapper(type: Wrapper) {
 	gradleVersion = '4.2.1'
@@ -54,6 +54,7 @@ task listJars {
 	}
 }
 
+/* --- --- --- */
 
 /*
 
