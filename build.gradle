@@ -1,3 +1,4 @@
+
 apply plugin: 'java'
 apply plugin: 'eclipse'
 
@@ -11,10 +12,19 @@ jar {
     }
 }
 
+
 /* Additional JARs */
 repositories {
     mavenCentral()
 }
+/* ??? uploadArchives {
+    repositories {
+       flatDir {
+           dirs 'repos'
+       }
+    }
+}*/
+
 
 dependencies {
     compile group: 'commons-collections', name: 'commons-collections', version: '3.2'
@@ -26,14 +36,6 @@ dependencies {
 }
 
 
-uploadArchives {
-    repositories {
-       flatDir {
-           dirs 'repos'
-       }
-    }
-}
-
 test {
     systemProperties 'property': 'value'
 	useTestNG() {
@@ -41,8 +43,10 @@ test {
 	}
 }
 
+
 /* --- --- */
 
+/* Downlload gradlew wrapper, if necessary */
 task wrapper(type: Wrapper) {
 	gradleVersion = '4.2.1'
 }
@@ -55,6 +59,7 @@ task listJars {
 }
 
 /* --- --- --- */
+
 
 /*
 
