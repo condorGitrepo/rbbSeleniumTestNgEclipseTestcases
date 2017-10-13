@@ -57,6 +57,8 @@ task listJars {
 
 /*
 
+Quelle-Ref: https://docs.gradle.org/current/dsl/org.gradle.api.tasks.testing.Test.html 
+
 Quelle: https://docs.gradle.org/current/userguide/tutorial_gradle_command_line.html
 
 task compile {
