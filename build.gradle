@@ -84,6 +84,7 @@ task listJars {
 }
 
 task printSomething {
+	description '#'
 	doLast {
 		println "The project name :: ${project.name}"
 	}
