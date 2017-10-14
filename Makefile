@@ -34,6 +34,9 @@ clean:
 info:
 	${G} ${GGWOPTS} project
 
+ownTasks:
+	${G} ${GGWOPTS} -q tasks --all | grep --color=always -A 100 'Other tasks' | grep --color=always '#' 
+
 testaTask:
 	${GW} printSomething
 
