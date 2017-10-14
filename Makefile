@@ -35,7 +35,7 @@ info:
 	${G} ${GGWOPTS} project
 
 ownTasks:
-	${G} ${GGWOPTS} -q tasks --all | grep --color=always -A 100 'Other tasks' | grep --color=always '#' 
+	${G} ${GGWOPTS} -q tasks --all | grep --color=always -A 100 'MGE tasks' | grep --color=always '#' 
 
 testaTask:
 	${GW} printSomething

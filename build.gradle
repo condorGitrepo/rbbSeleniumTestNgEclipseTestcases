@@ -87,7 +87,7 @@ task listJars {
 }
 
 task printSomething {
-	group 'mge' 
+	group 'MGE' 
 	description '#'
 	doFirst {
 		println "The project name :: ${project.name}"
