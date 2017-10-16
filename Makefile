@@ -36,7 +36,7 @@ ownTasks:
 	${GW} ${GGWOPTS} -q tasks --all | grep --color=always -A 100 'MGE tasks' | grep --color=always '#' 
 
 specificTask:
-	${GW} printSomething
+	${GW} ${GGWOPTS} printSomething
 	#${G} ${GGWOPTS} -q tasks printSomething 
 
 
