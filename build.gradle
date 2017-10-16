@@ -76,8 +76,8 @@ Project name: ${project.name}
 /* --- Tasks --- */
 
 // bash: #printenv
-//def home = "$System.env.HOME"
-// AL: def home = System.properties['user.home']
+def bashHomePath = "$System.env.HOME"
+// AL: def bashHomePath = System.properties['user.home']
 
 /* Downlload gradlew wrapper, if necessary */
 task wrapper(type: Wrapper) {
@@ -126,7 +126,7 @@ task printSomething {
  	group 'MGE' 
 	description '#'
 	doFirst {
-		println "The project name :: ${project.name} ${home}"
+		println "The project name :: ${project.name} ${bashHomePath}"
 	}
 	doLast {
 		println "CREATOR"

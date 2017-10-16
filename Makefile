@@ -2,7 +2,7 @@
  
 # PHONY := target is not associated with a physical file 
 ## (e.g.: the target "clean" is independent from the "file clean", if it exists)
-.PHONY: all build wrap clean info
+.PHONY: all build clean info ownTasks specificTask
   
 # Define Variables
 G=gradle
@@ -15,15 +15,8 @@ MAINNAME=
 
 # --- Makefile Logic ---
 
-all: clean build wrap
+all: clean build
 
-build:
-	${G} ${GGWOPTS} build
-	# Get wrapper libs
-	${G} ${GGWOPTS} wrapper
-
-wrap:
-	${GW} ${GGWOPTS} eclipse assemble
 
 clean:
 	touch .project
@@ -31,11 +24,16 @@ clean:
 	${G} ${GGWOPTS} assemble
 	${G} ${GGWOPTS} clean
 
+build:
+	${G} ${GGWOPTS} build
+	${G} ${GGWOPTS} wrapper # Get wrapper libs
+	${GW} ${GGWOPTS} eclipse assemble # Download Chars
+
 info:
-	${G} ${GGWOPTS} project
+	${GW} ${GGWOPTS} project
 
 ownTasks:
-	${G} ${GGWOPTS} -q tasks --all | grep --color=always -A 100 'MGE tasks' | grep --color=always '#' 
+	${GW} ${GGWOPTS} -q tasks --all | grep --color=always -A 100 'MGE tasks' | grep --color=always '#' 
 
 specificTask:
 	${GW} printSomething
