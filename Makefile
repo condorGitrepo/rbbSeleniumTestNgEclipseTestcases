@@ -37,8 +37,10 @@ info:
 ownTasks:
 	${G} ${GGWOPTS} -q tasks --all | grep --color=always -A 100 'MGE tasks' | grep --color=always '#' 
 
-testaTask:
+specificTask:
 	${GW} printSomething
+	#${G} ${GGWOPTS} -q tasks printSomething 
+
 
 # ----------------------
 

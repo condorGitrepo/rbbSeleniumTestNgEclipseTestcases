@@ -27,6 +27,7 @@ repositories {
 
 
 dependencies {
+	// # gradle -q init --type groovy-library
     compile group: 'commons-collections', name: 'commons-collections', version: '3.2'
     testCompile group: 'junit', name: 'junit', version: '4.+'
     testCompile 'org.testng:testng:' + '6.+'
@@ -74,6 +75,10 @@ Project name: ${project.name}
 
 /* --- Tasks --- */
 
+// bash: #printenv
+//def home = "$System.env.HOME"
+// AL: def home = System.properties['user.home']
+
 /* Downlload gradlew wrapper, if necessary */
 task wrapper(type: Wrapper) {
 	gradleVersion = '4.2.1'
@@ -86,16 +91,70 @@ task listJars {
 	}
 }
 
+
+defaultTasks 'cleanA', 'compileA'
+
+task cleanA {
+ 	group 'MGE' 
+	description '#'
+    doLast {
+        println 'Executing the clean task'
+    }
+}
+
+task compileA {
+ 	group 'MGE' 
+	description '#'
+    doLast {
+        println 'Executing the compile task'
+    }
+}
+
+
+task runA(dependsOn: [compileA]) {
+ 	group 'MGE' 
+	description '#'
+    doLast {
+        println 'Executing the compile task'
+    }
+}
+// AL: run.dependsOn compile, ...
+
+
 task printSomething {
-	group 'MGE' 
+	// List taks by # gradle -q tasks --all under group-name
+ 	group 'MGE' 
 	description '#'
 	doFirst {
-		println "The project name :: ${project.name}"
+		println "The project name :: ${project.name} ${home}"
 	}
 	doLast {
 		println "CREATOR"
 	}
 }
+
+
+/* Task in dependecy of ...
+task eclipse {
+ 	group 'MGE' 
+	description '#'
+    doLast {
+        println 'Hello Eclipse'
+    }
+}
+
+// #1st approach - closure returning true, if the task should be executed, false if not.
+eclipse.onlyIf {
+    project.hasProperty('usingEclipse')
+}
+
+// #2nd approach - alternatively throw an StopExecutionException() like this
+eclipse.doFirst {
+    if(!usingEclipse) {
+        throw new StopExecutionException()
+    }
+}
+*/
 
 /* --- --- --- */
 
