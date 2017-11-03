@@ -11,15 +11,6 @@ public class rbbTest {
 
 		//String baseUrl = "http://rbb24.de";
 	
-		// Using the Interface webdriver with the Methode get, launches the explorer
-		//driver.get(baseUrl);
-
-		
-		// -----------------------------------
-
-		// Testfall	1 
-		
-		// API: Package Selenium -> Interface webdriver -> Methode getTitle
 		//String actualTitle = actualTitle=driver.getTitle();
 		//String expectedTitle = "rbb|24 – Nachrichten aus Berlin und Brandenburg | rbb Rundfunk Berlin-Brandenburg";
 		String expectedTitle = "rbb|24 | rbb|24 - Nachrichten aus Berlin und Brandenburg";
