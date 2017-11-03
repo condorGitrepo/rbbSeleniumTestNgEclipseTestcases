@@ -2,16 +2,16 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Test-Suite" duration-ms="107" started-at="2017-11-03T13:37:45Z" finished-at="2017-11-03T13:37:45Z">
+  <suite name="Default suite" duration-ms="106" started-at="2017-11-03T16:02:29Z" finished-at="2017-11-03T16:02:29Z">
     <groups>
     </groups>
-    <test name="Tools-QA" duration-ms="107" started-at="2017-11-03T13:37:45Z" finished-at="2017-11-03T13:37:45Z">
+    <test name="Default test" duration-ms="106" started-at="2017-11-03T16:02:29Z" finished-at="2017-11-03T16:02:29Z">
       <class name="org.gradle.rbbTest">
-        <test-method status="PASS" signature="testcase()[pri:0, instance:org.gradle.rbbTest@76707e36]" name="testcase" duration-ms="35" started-at="2017-11-03T14:37:45Z" finished-at="2017-11-03T14:37:45Z">
+        <test-method status="PASS" signature="testcase()[pri:7, instance:org.gradle.rbbTest@285f38f6]" name="testcase" duration-ms="32" started-at="2017-11-03T17:02:29Z" finished-at="2017-11-03T17:02:29Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testcase -->
       </class> <!-- org.gradle.rbbTest -->
-    </test> <!-- Tools-QA -->
-  </suite> <!-- Test-Suite -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
 </testng-results>

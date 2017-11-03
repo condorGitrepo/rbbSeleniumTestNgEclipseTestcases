@@ -1,10 +1,11 @@
 package org.gradle;
 
+import org.junit.Assert;
 import org.testng.annotations.Test;
 
 public class rbbTest {  
 
-	@Test
+	@Test(priority = 7)
 	public void testcase() {  
 
 		System.out.println("starting selenium web driver");  
@@ -14,7 +15,8 @@ public class rbbTest {
 		//String actualTitle = actualTitle=driver.getTitle();
 		//String expectedTitle = "rbb|24 – Nachrichten aus Berlin und Brandenburg | rbb Rundfunk Berlin-Brandenburg";
 		String expectedTitle = "rbb|24 | rbb|24 - Nachrichten aus Berlin und Brandenburg";
-		String actualTitle = expectedTitle;
+		String actualTitle = "aa"; 
+		//String actualTitle = expectedTitle;
 		
 		// Vergleiche Titel mit zu erwartenden Titel	
 		if (actualTitle.contentEquals(expectedTitle)){
@@ -25,6 +27,7 @@ public class rbbTest {
 			System.out.println("---------------------------");
 			System.out.println("Test Passed!");
 			System.out.println("+++++++++++++++++++++++++++");
+			Assert.assertTrue(true);
 		} else {
 			System.out.println("+++++++++++++++++++++++++++");
 			System.out.println("actualTitle: " + actualTitle);
@@ -33,6 +36,7 @@ public class rbbTest {
 			System.out.println("---------------------------");
 			System.out.println("Test Failed");
 			System.out.println("+++++++++++++++++++++++++++");
+			//Assert.fail();
 		}	
 
 		// -----------------------------------  

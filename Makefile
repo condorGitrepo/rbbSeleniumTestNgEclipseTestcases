@@ -7,8 +7,7 @@
 # Define Variables
 G=gradle
 GW=./gradlew
-GGWOPTS=
-#-i
+GGWOPTS=-i
 
 
 
@@ -19,6 +18,9 @@ all: clean build
 
 #touch .project ## Is not necessary anymore for configure-->converting into Gradle STS 
 ## because of "eclipseProject"
+
+all: clean initBuild build
+
 clean:
 	${G} ${GGWOPTS} cleanEclipse
 	${G} ${GGWOPTS} clean

@@ -34,6 +34,8 @@ dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.+'
     testCompile 'org.testng:testng:' + '6.+'
 
+    //compile project(':rbbSeleniumTestNgEclipseTestcases')
+
 
 	/* local project jars in own libs folder */
 	//compoile fileTree(dir: 'libs', include: '*.jar')
@@ -114,13 +116,16 @@ task listJars {
 }
 
 
-defaultTasks 'cleanA', 'compileA'
+defaultTasks 'cleanClass', 'compileA'
 
-task cleanA {
+task cleanClass(type: Delete) {
  	group 'MGE' 
 	description '#'
+	doFirst {
+		delete './bin/org/gradle/rbbTest.class'
+	}
     doLast {
-        println 'Executing the clean task'
+        println 'Executing the cleanClass task'
     }
 }
 
