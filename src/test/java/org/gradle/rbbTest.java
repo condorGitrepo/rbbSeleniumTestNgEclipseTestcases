@@ -2,16 +2,48 @@ package org.gradle;
 
 import org.testng.annotations.Test;
 
-public class rbbTest {
+public class rbbTest {  
+
 	@Test
-	public void firstTestCase()
-	{
-		System.out.println("im in first test case from demoOne Class");
-	}
+	public void testcase() {  
+
+		System.out.println("starting selenium web driver");  
+
+		//String baseUrl = "http://rbb24.de";
 	
-	@Test
-	public void secondTestCase()
-	{
-		System.out.println("im in second test case from demoOne Class");
-	}
+		// Using the Interface webdriver with the Methode get, launches the explorer
+		//driver.get(baseUrl);
+
+		
+		// -----------------------------------
+
+		// Testfall	1 
+		
+		// API: Package Selenium -> Interface webdriver -> Methode getTitle
+		//String actualTitle = actualTitle=driver.getTitle();
+		//String expectedTitle = "rbb|24 – Nachrichten aus Berlin und Brandenburg | rbb Rundfunk Berlin-Brandenburg";
+		String expectedTitle = "rbb|24 | rbb|24 - Nachrichten aus Berlin und Brandenburg";
+		String actualTitle = expectedTitle;
+		
+		// Vergleiche Titel mit zu erwartenden Titel	
+		if (actualTitle.contentEquals(expectedTitle)){
+			System.out.println("+++++++++++++++++++++++++++");
+			System.out.println("actualTitle: " + actualTitle);
+			System.out.println("---------------------------");
+			System.out.println("expectedTitle: " + expectedTitle);
+			System.out.println("---------------------------");
+			System.out.println("Test Passed!");
+			System.out.println("+++++++++++++++++++++++++++");
+		} else {
+			System.out.println("+++++++++++++++++++++++++++");
+			System.out.println("actualTitle: " + actualTitle);
+			System.out.println("---------------------------");
+			System.out.println("expectedTitle: " + expectedTitle);
+			System.out.println("---------------------------");
+			System.out.println("Test Failed");
+			System.out.println("+++++++++++++++++++++++++++");
+		}	
+
+		// -----------------------------------  
+	}  
 }

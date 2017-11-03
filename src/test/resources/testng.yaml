@@ -1,8 +1,7 @@
 name: Test-Suite
 configFailurePolicy: skip
 tests:
-  - name: Tools QA
+  - name: Tools-QA
     classes:
       - org.gradle.rbbTest
-      - org.gradle.rbbTest2
 

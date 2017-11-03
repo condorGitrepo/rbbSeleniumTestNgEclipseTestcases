@@ -32,6 +32,10 @@ build:
 	${GW} ${GGWOPTS} assemble # Java files into JAR-file  
 	${GW} ${GGWOPTS} eclipseProject
 
+test:
+	${GW} ${GGWOPTS} clean
+	${GW} ${GGWOPTS} test
+
 info:
 	${GW} ${GGWOPTS} project
 

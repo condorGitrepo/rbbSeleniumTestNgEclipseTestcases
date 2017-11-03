@@ -32,7 +32,6 @@ dependencies {
 	// # gradle -q init --type groovy-library
     compile group: 'commons-collections', name: 'commons-collections', version: '3.2'
     testCompile group: 'junit', name: 'junit', version: '4.+'
-	//testCompile 'org.seleniumhq.selenium:selenium:' + '2.+'
     testCompile 'org.testng:testng:' + '6.+'
 
 
@@ -45,12 +44,10 @@ dependencies {
 
 
 
-/* --- Test --- */
+/* --- Test env --- */
 
 // TestSuite = running a set of testcases
-/*def suite1 = project.hasProperty("suite1")
-def suite2 = project.hasProperty("suite2")
-*/
+def rbbTest = project.hasProperty("Test-Suite")
 
 /* Global testconfiguration */
 test {
@@ -64,30 +61,21 @@ test {
 	// set heap size for the test JVM(s)
 	minHeapSize = "128m"
 	maxHeapSize = "512m"
-
-	// set JVM arguments for the test JVM(s)
-	jvmArgs '-XX:MaxPermSize=256m'
 	  
     /* enable testng support (default is junit) */
 	useTestNG() {
 		// loading .xml test configuration into suiteXMLfiles
-		suiteXmlFiles << new File("src/test/resources/testng.yaml")
-		setSuiteXmlFiles(suiteXmlFiles)  
+		//suiteXmlFiles << new File("src/test/resources/testng.yaml")
+		//setSuiteXmlFiles(suiteXmlFiles)  
 		
-		/*
-		if(suite1) {
-            suites "src/test/resources/simpleSuite.xml"
-        }
-
-        if(suite2) {
-            suites "src/test/resources/advancedSuite.xml"
-        }
-        */		
+		if(rbbTest) {
+			suites "src/test/resources/testng.yaml"
+		}
+	
 	}
 }
 /*
-gradlew test -Psuite1
-gradlew test -Psuite2
+gradlew test -PsuiteX
 gradlew test -Psuite1 -Psuite2
 */
 /* --- --- --- */
