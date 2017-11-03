@@ -2,8 +2,10 @@
 apply plugin: 'java'
 apply plugin: 'eclipse'
 
-version = '1.0'
+version = '1.0-DEV'
 
+// Quell: https://docs.gradle.org/current/userguide/java_plugin.html
+//archivesBaseName =   
 
 jar {
     manifest {
@@ -30,7 +32,9 @@ dependencies {
 	// # gradle -q init --type groovy-library
     compile group: 'commons-collections', name: 'commons-collections', version: '3.2'
     testCompile group: 'junit', name: 'junit', version: '4.+'
+	//testCompile 'org.seleniumhq.selenium:selenium:' + '2.+'
     testCompile 'org.testng:testng:' + '6.+'
+
 
 	/* local project jars in own libs folder */
 	//compoile fileTree(dir: 'libs', include: '*.jar')
@@ -40,18 +44,21 @@ dependencies {
 }
 
 
+
+/* --- Test --- */
+
+// TestSuite = running a set of testcases
+/*def suite1 = project.hasProperty("suite1")
+def suite2 = project.hasProperty("suite2")
+*/
+
 /* Global testconfiguration */
 test {
     /* Set system property for JVM(s) */
     systemProperties 'property': 'value'
-    
-    /* enable testng support (default is junit) */
-	useTestNG() {
-		suiteXmlFiles << new File("src/test/resources/testng.xml")
-		// !!! testng.xml added by myself
-	}
-
-	// show standard out and standard error of the test JVM(s) on the console
+	systemProperties 'tests.browser': 'firefox'
+	
+   	// show standard out and standard error of the test JVM(s) on the console
 	testLogging.showStandardStreams = true
 
 	// set heap size for the test JVM(s)
@@ -60,7 +67,30 @@ test {
 
 	// set JVM arguments for the test JVM(s)
 	jvmArgs '-XX:MaxPermSize=256m'
+	  
+    /* enable testng support (default is junit) */
+	useTestNG() {
+		// loading .xml test configuration into suiteXMLfiles
+		suiteXmlFiles << new File("src/test/resources/testng.yaml")
+		setSuiteXmlFiles(suiteXmlFiles)  
+		
+		/*
+		if(suite1) {
+            suites "src/test/resources/simpleSuite.xml"
+        }
+
+        if(suite2) {
+            suites "src/test/resources/advancedSuite.xml"
+        }
+        */		
+	}
 }
+/*
+gradlew test -Psuite1
+gradlew test -Psuite2
+gradlew test -Psuite1 -Psuite2
+*/
+/* --- --- --- */
 
 
 
@@ -79,13 +109,17 @@ Project name: ${project.name}
 def bashHomePath = "$System.env.HOME"
 // AL: def bashHomePath = System.properties['user.home']
 
-/* Downlload gradlew wrapper, if necessary */
+
 task wrapper(type: Wrapper) {
+	group 'MGE'
+	description '# Download gradlew wrapper, if necessary'
 	gradleVersion = '4.2.1'
 }
 
-/* Verify all jar dependencies */
+
 task listJars {
+	group 'MGE'
+	description '# Verify all jar dependencies'
 	configurations.compile.each {
 		File file -> println file.name
 	}

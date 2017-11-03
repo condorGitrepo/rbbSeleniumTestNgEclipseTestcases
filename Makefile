@@ -2,7 +2,7 @@
  
 # PHONY := target is not associated with a physical file 
 ## (e.g.: the target "clean" is independent from the "file clean", if it exists)
-.PHONY: all build clean info ownTasks specificTask
+.PHONY: all initBuild build clean info showOwnTasks specificTask
   
 # Define Variables
 G=gradle
@@ -10,7 +10,6 @@ GW=./gradlew
 GGWOPTS=
 #-i
 
-MAINNAME=
 
 
 # --- Makefile Logic ---
@@ -18,21 +17,25 @@ MAINNAME=
 all: clean build
 
 
+#touch .project ## Is not necessary anymore for configure-->converting into Gradle STS 
+## because of "eclipseProject"
 clean:
-	touch .project
 	${G} ${GGWOPTS} cleanEclipse
-	${G} ${GGWOPTS} assemble
 	${G} ${GGWOPTS} clean
 
-build:
+initBuild:
 	${G} ${GGWOPTS} build
 	${G} ${GGWOPTS} wrapper # Get wrapper libs
-	${GW} ${GGWOPTS} eclipse assemble # Download Chars
+
+build:
+	${GW} ${GGWOPTS} eclipse # Download Jars
+	${GW} ${GGWOPTS} assemble # Java files into JAR-file  
+	${GW} ${GGWOPTS} eclipseProject
 
 info:
 	${GW} ${GGWOPTS} project
 
-ownTasks:
+showOwnTasks:
 	${GW} ${GGWOPTS} -q tasks --all | grep --color=always -A 100 'MGE tasks' | grep --color=always '#' 
 
 specificTask:
@@ -40,12 +43,15 @@ specificTask:
 	#${G} ${GGWOPTS} -q tasks printSomething 
 
 
-# ----------------------
+# --- --- ---
 
 ### Usefull knowledge:
 # If startuptime is slow then use: # export GRADLE_OPTS=-Xmx1024m 
 # This defines a higher heap size OR loacally in gradle.properties: 
 # 	org.gradle.jvmargs=-Xms2g -Xmx4g -XX\:MaxHeapSize\=3g
+
+### Gradle shorts:
+# gradle -q build    invokes checks and assemble tasks
 
 
 
