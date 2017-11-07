@@ -110,7 +110,7 @@ task listJars {
 }
 
 
-task sync_build_to_bin(type: Sync, dependsOn: build) {
+task syncBuildToBin(type: Sync, dependsOn: build) {
  	group 'MGE' 
 	description '#'
     from 'build/classes/java/test'
