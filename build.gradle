@@ -19,13 +19,7 @@ jar {
 repositories {
     mavenCentral()
 }
-/* ??? uploadArchives {
-    repositories {
-       flatDir {
-           dirs 'repos'
-       }
-    }
-}*/
+
 
 
 dependencies {
@@ -47,7 +41,6 @@ dependencies {
 
 
 /* --- Test env --- */
-
 // TestSuite = running a set of testcases
 def rbbTest = project.hasProperty("Test-Suite")
 

@@ -59,6 +59,13 @@ specificTask:
 ### Gradle shorts:
 # gradle -q build    invokes checks and assemble tasks
 
-
+### Create JAR-File
+## Create manifest.mf:
+# Manifest-version: 1.0
+# Main-Class: Test
+## Create Java class File ...
+## Compile: # javac Test.java
+## Jar:     # jar cfm test.jar manifest.mf Test.class
+## Execute: # java -jar test.jar
 
 
