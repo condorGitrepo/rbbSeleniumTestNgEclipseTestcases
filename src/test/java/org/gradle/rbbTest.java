@@ -15,8 +15,8 @@ public class rbbTest {
 		//String actualTitle = actualTitle=driver.getTitle();
 		//String expectedTitle = "rbb|24 – Nachrichten aus Berlin und Brandenburg | rbb Rundfunk Berlin-Brandenburg";
 		String expectedTitle = "rbb|24 | rbb|24 - Nachrichten aus Berlin und Brandenburg";
-		String actualTitle = "aa"; 
-		//String actualTitle = expectedTitle;
+		//String actualTitle = "aa"; 
+		String actualTitle = expectedTitle;
 		
 		// Vergleiche Titel mit zu erwartenden Titel	
 		if (actualTitle.contentEquals(expectedTitle)){
@@ -41,4 +41,5 @@ public class rbbTest {
 
 		// -----------------------------------  
 	}  
+	
 }

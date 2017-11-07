@@ -2,12 +2,12 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Test-Suite" duration-ms="61" started-at="2017-11-07T14:17:06Z" finished-at="2017-11-07T14:17:06Z">
+  <suite name="Test-Suite" duration-ms="114" started-at="2017-11-07T16:36:14Z" finished-at="2017-11-07T16:36:14Z">
     <groups>
     </groups>
-    <test name="Tools-QA" duration-ms="61" started-at="2017-11-07T14:17:06Z" finished-at="2017-11-07T14:17:06Z">
+    <test name="Tools-QA" duration-ms="114" started-at="2017-11-07T16:36:14Z" finished-at="2017-11-07T16:36:14Z">
       <class name="org.gradle.rbbTest">
-        <test-method status="PASS" signature="testcase()[pri:7, instance:org.gradle.rbbTest@76707e36]" name="testcase" duration-ms="19" started-at="2017-11-07T15:17:06Z" finished-at="2017-11-07T15:17:06Z">
+        <test-method status="PASS" signature="testcase()[pri:7, instance:org.gradle.rbbTest@4baed682]" name="testcase" duration-ms="22" started-at="2017-11-07T17:36:14Z" finished-at="2017-11-07T17:36:14Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testcase -->

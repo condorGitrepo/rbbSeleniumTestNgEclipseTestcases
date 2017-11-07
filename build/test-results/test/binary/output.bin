@@ -1,8 +1,8 @@
 starting selenium web driver
 +++++++++++++++++++++++++++
-actualTitle: aa
+FactualTitle: rbb|24 | rbb|24 - Nachrichten aus Berlin und Brandenburg
 ---------------------------
 HexpectedTitle: rbb|24 | rbb|24 - Nachrichten aus Berlin und Brandenburg
 ---------------------------
-Test Failed
+Test Passed!
 +++++++++++++++++++++++++++

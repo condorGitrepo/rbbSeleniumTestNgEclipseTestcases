@@ -2,6 +2,7 @@
 apply plugin: 'java'
 apply plugin: 'eclipse'
 
+// Jar-File version
 version = '1.0-DEV'
 
 // Quell: https://docs.gradle.org/current/userguide/java_plugin.html
@@ -106,6 +107,15 @@ task listJars {
 	configurations.compile.each {
 		File file -> println file.name
 	}
+}
+
+
+task sync_build_to_bin(type: Sync, dependsOn: build) {
+ 	group 'MGE' 
+	description '#'
+    from 'build/classes/java/test'
+    	include "**/*.class"
+    into 'bin'
 }
 
 
