@@ -37,7 +37,6 @@ dependencies {
 	/* local project jars in own libs folder */
 	compile fileTree(dir: 'libs', include: '*.jar')
 	
-	
 	/* Reference from filesystem */
 	//compile fileTree(dir: "${System.properties['user.home']}/libs/cargo", include: '*.jar')
 }

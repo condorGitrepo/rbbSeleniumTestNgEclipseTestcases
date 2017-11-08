@@ -3,27 +3,36 @@ package org.gradle;
 
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
+import org.testng.asserts.*;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
-
+import org.openqa.selenium.firefox.FirefoxDriver;  
 
 
 public class rbbTest {  
 
 	public String baseUrl = "http://rbb24.de";
+	String driverPath = "libs/geckodriver"; 
 	public WebDriver driver;
+	
+	
+	@BeforeTest
+	public void setBaseURL() {
+		System.setProperty("webdriver.firefox.marionette", driverPath);
+		driver = new FirefoxDriver();
+		driver.get(baseUrl);
+	}
 	
 	@Test(priority = 7)
 	public void testcase() {  
 
-		System.out.println("starting selenium web driver");  
-
-		
-	
-		//String actualTitle = actualTitle=driver.getTitle();
+		System.out.println("Selenium web driver");  
+			
+		String actualTitle = driver.getTitle();
 		//String expectedTitle = "rbb|24 – Nachrichten aus Berlin und Brandenburg | rbb Rundfunk Berlin-Brandenburg";
 		String expectedTitle = "rbb|24 | rbb|24 - Nachrichten aus Berlin und Brandenburg";
 		//String actualTitle = "aa"; 
-		String actualTitle = expectedTitle;
+		//String actualTitle = expectedTitle;
 		
 		// Vergleiche Titel mit zu erwartenden Titel	
 		if (actualTitle.contentEquals(expectedTitle)){
@@ -46,5 +55,7 @@ public class rbbTest {
 			//Assert.fail();
 		}	
 		// -----------------------------------  
+    	driver.close();
+        driver.quit();
 	}  
 }

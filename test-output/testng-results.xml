@@ -2,16 +2,20 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Test-Suite" duration-ms="114" started-at="2017-11-07T16:36:14Z" finished-at="2017-11-07T16:36:14Z">
+  <suite name="Default suite" duration-ms="57194" started-at="2017-11-08T15:45:07Z" finished-at="2017-11-08T15:46:04Z">
     <groups>
     </groups>
-    <test name="Tools-QA" duration-ms="114" started-at="2017-11-07T16:36:14Z" finished-at="2017-11-07T16:36:14Z">
+    <test name="Default test" duration-ms="57194" started-at="2017-11-08T15:45:07Z" finished-at="2017-11-08T15:46:04Z">
       <class name="org.gradle.rbbTest">
-        <test-method status="PASS" signature="testcase()[pri:7, instance:org.gradle.rbbTest@4baed682]" name="testcase" duration-ms="22" started-at="2017-11-07T17:36:14Z" finished-at="2017-11-07T17:36:14Z">
+        <test-method status="PASS" signature="setBaseURL()[pri:0, instance:org.gradle.rbbTest@6d025d1d]" name="setBaseURL" is-config="true" duration-ms="34817" started-at="2017-11-08T16:45:07Z" finished-at="2017-11-08T16:45:42Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setBaseURL -->
+        <test-method status="PASS" signature="testcase()[pri:7, instance:org.gradle.rbbTest@6d025d1d]" name="testcase" duration-ms="22265" started-at="2017-11-08T16:45:42Z" finished-at="2017-11-08T16:46:04Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testcase -->
       </class> <!-- org.gradle.rbbTest -->
-    </test> <!-- Tools-QA -->
-  </suite> <!-- Test-Suite -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
 </testng-results>
