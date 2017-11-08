@@ -6,7 +6,9 @@ apply plugin: 'eclipse'
 version = '1.0-DEV'
 
 // Quell: https://docs.gradle.org/current/userguide/java_plugin.html
-//archivesBaseName =   
+//archivesBaseName = DEFAULT_IS_PROJECTNAME
+
+
 
 jar {
     manifest {
@@ -14,6 +16,7 @@ jar {
                    'Implementation-Version': version
     }
 }
+
 
 
 /* Additional JARs */
@@ -31,9 +34,9 @@ dependencies {
 
     //compile project(':rbbSeleniumTestNgEclipseTestcases')
 
-
 	/* local project jars in own libs folder */
-	//compoile fileTree(dir: 'libs', include: '*.jar')
+	compile fileTree(dir: 'libs', include: '*.jar')
+	
 	
 	/* Reference from filesystem */
 	//compile fileTree(dir: "${System.properties['user.home']}/libs/cargo", include: '*.jar')
@@ -44,6 +47,8 @@ dependencies {
 /* --- Test env --- */
 // TestSuite = running a set of testcases
 def rbbTest = project.hasProperty("Test-Suite")
+// ./gradlew test -PsuiteX
+// ./gradlew test -Psuite1 -Psuite2
 
 /* Global testconfiguration */
 test {
@@ -67,13 +72,8 @@ test {
 		if(rbbTest) {
 			suites "src/test/resources/testng.yaml"
 		}
-	
 	}
 }
-/*
-gradlew test -PsuiteX
-gradlew test -Psuite1 -Psuite2
-*/
 /* --- --- --- */
 
 
@@ -88,7 +88,6 @@ Project name: ${project.name}
 
 
 /* --- Tasks --- */
-
 // bash: #printenv
 def bashHomePath = "$System.env.HOME"
 // AL: def bashHomePath = System.properties['user.home']
@@ -113,13 +112,12 @@ task listJars {
 task syncBuildToBin(type: Sync, dependsOn: build) {
  	group 'MGE' 
 	description '#'
+	// AL: run.dependsOn build, ...
     from 'build/classes/java/test'
     	include "**/*.class"
     into 'bin'
 }
 
-
-defaultTasks 'cleanClass', 'compileA'
 
 task cleanClass(type: Delete) {
  	group 'MGE' 
@@ -132,24 +130,6 @@ task cleanClass(type: Delete) {
     }
 }
 
-task compileA {
- 	group 'MGE' 
-	description '#'
-    doLast {
-        println 'Executing the compile task'
-    }
-}
-
-
-task runA(dependsOn: [compileA]) {
- 	group 'MGE' 
-	description '#'
-    doLast {
-        println 'Executing the compile task'
-    }
-}
-// AL: run.dependsOn compile, ...
-
 
 task printSomething {
 	// List taks by # gradle -q tasks --all under group-name
@@ -159,33 +139,9 @@ task printSomething {
 		println "The project name :: ${project.name} ${bashHomePath}"
 	}
 	doLast {
-		println "CREATOR"
+		println "CREATOR...so last"
 	}
 }
-
-
-/* Task in dependecy of ...
-task eclipse {
- 	group 'MGE' 
-	description '#'
-    doLast {
-        println 'Hello Eclipse'
-    }
-}
-
-// #1st approach - closure returning true, if the task should be executed, false if not.
-eclipse.onlyIf {
-    project.hasProperty('usingEclipse')
-}
-
-// #2nd approach - alternatively throw an StopExecutionException() like this
-eclipse.doFirst {
-    if(!usingEclipse) {
-        throw new StopExecutionException()
-    }
-}
-*/
-
 /* --- --- --- */
 
 

@@ -1,16 +1,23 @@
 package org.gradle;
 
+
 import org.junit.Assert;
+import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
+
+
 
 public class rbbTest {  
 
+	public String baseUrl = "http://rbb24.de";
+	public WebDriver driver;
+	
 	@Test(priority = 7)
 	public void testcase() {  
 
 		System.out.println("starting selenium web driver");  
 
-		//String baseUrl = "http://rbb24.de";
+		
 	
 		//String actualTitle = actualTitle=driver.getTitle();
 		//String expectedTitle = "rbb|24 – Nachrichten aus Berlin und Brandenburg | rbb Rundfunk Berlin-Brandenburg";
@@ -38,8 +45,6 @@ public class rbbTest {
 			System.out.println("+++++++++++++++++++++++++++");
 			//Assert.fail();
 		}	
-
 		// -----------------------------------  
 	}  
-	
 }
