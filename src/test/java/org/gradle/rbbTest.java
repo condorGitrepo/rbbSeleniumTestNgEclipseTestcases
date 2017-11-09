@@ -1,9 +1,9 @@
 package org.gradle;
 
 
-import org.junit.Assert;
+import org.testng.Assert;
 import org.openqa.selenium.WebDriver;
-import org.testng.asserts.*;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import org.openqa.selenium.firefox.FirefoxDriver;  
@@ -23,16 +23,17 @@ public class rbbTest {
 		driver.get(baseUrl);
 	}
 	
-	@Test(priority = 7)
-	public void testcase() {  
-
-		System.out.println("Selenium web driver");  
+	
+	/*
+	 * priority 0    	(lowest, is going to be executed first)
+	 * priority 7		(highest, is going to be executed last)
+	 * */
+	@Test(priority = 0)
+	public void testcase01() {  
 			
 		String actualTitle = driver.getTitle();
 		//String expectedTitle = "rbb|24 – Nachrichten aus Berlin und Brandenburg | rbb Rundfunk Berlin-Brandenburg";
 		String expectedTitle = "rbb|24 | rbb|24 - Nachrichten aus Berlin und Brandenburg";
-		//String actualTitle = "aa"; 
-		//String actualTitle = expectedTitle;
 		
 		// Vergleiche Titel mit zu erwartenden Titel	
 		if (actualTitle.contentEquals(expectedTitle)){
@@ -43,7 +44,6 @@ public class rbbTest {
 			System.out.println("---------------------------");
 			System.out.println("Test Passed!");
 			System.out.println("+++++++++++++++++++++++++++");
-			Assert.assertTrue(true);
 		} else {
 			System.out.println("+++++++++++++++++++++++++++");
 			System.out.println("actualTitle: " + actualTitle);
@@ -52,10 +52,23 @@ public class rbbTest {
 			System.out.println("---------------------------");
 			System.out.println("Test Failed");
 			System.out.println("+++++++++++++++++++++++++++");
-			//Assert.fail();
 		}	
-		// -----------------------------------  
-    	driver.close();
-        driver.quit();
+		Assert.assertEquals(actualTitle, expectedTitle);
+
+		// -----------------------------------          
 	}  
+	
+	@Test(priority = 7)
+	public void testcase02() {
+		String actualTitle = driver.getTitle();
+		String expectedTitle = "aa";
+		Assert.assertEquals(actualTitle, expectedTitle);
+	}
+	
+	
+	@AfterTest
+    public void terminateBrowser(){
+		driver.close();
+        //driver.quit();
+	}
 }

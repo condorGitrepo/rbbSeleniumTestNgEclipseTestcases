@@ -29,13 +29,15 @@ repositories {
 dependencies {
 	// # gradle -q init --type groovy-library
     compile group: 'commons-collections', name: 'commons-collections', version: '3.2'
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.+'   
     testCompile group: 'junit', name: 'junit', version: '4.+'
     testCompile 'org.testng:testng:' + '6.+'
+    
 
     //compile project(':rbbSeleniumTestNgEclipseTestcases')
 
 	/* local project jars in own libs folder */
-	compile fileTree(dir: 'libs', include: '*.jar')
+	//compile fileTree(dir: 'libs', include: '*.jar')
 	
 	/* Reference from filesystem */
 	//compile fileTree(dir: "${System.properties['user.home']}/libs/cargo", include: '*.jar')
