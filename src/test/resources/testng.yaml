@@ -8,3 +8,4 @@ tests:
   - name: Tools-QA
     classes:
       - org.gradle.rbbTest
+      

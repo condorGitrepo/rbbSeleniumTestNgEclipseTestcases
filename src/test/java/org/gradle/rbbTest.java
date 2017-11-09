@@ -17,9 +17,11 @@ public class rbbTest {
 	
 	
 	@BeforeTest
-	public void setBaseURL() {
+	public void launchBrowser() {
 		System.setProperty("webdriver.firefox.marionette", driverPath);
 		driver = new FirefoxDriver();
+		
+		// Load homepage
 		driver.get(baseUrl);
 	}
 	
@@ -54,7 +56,6 @@ public class rbbTest {
 			System.out.println("+++++++++++++++++++++++++++");
 		}	
 		Assert.assertEquals(actualTitle, expectedTitle);
-
 		// -----------------------------------          
 	}  
 	
