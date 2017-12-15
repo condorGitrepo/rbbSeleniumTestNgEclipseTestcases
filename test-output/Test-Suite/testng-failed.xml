@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Failed suite [Test-Suite]">
+<suite thread-count="-1" name="Failed suite [Test-Suite]">
   <test name="Tools-QA(failed)">
     <classes>
       <class name="org.gradle.rbbTest">
         <methods>
           <include name="terminateBrowser"/>
-          <include name="testcase002"/>
+          <include name="testcase02"/>
+          <include name="testcase01"/>
           <include name="launchBrowser"/>
         </methods>
       </class> <!-- org.gradle.rbbTest -->

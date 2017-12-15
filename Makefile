@@ -9,15 +9,13 @@ G=gradle
 GW=./gradlew
 GGWOPTS=-i
 
+#touch .project ## Is not necessary anymore for configure-->converting into Gradle STS 
+## because of "eclipseProject"
 
 
 # --- Makefile Logic ---
 
-all: clean build
-
-
-#touch .project ## Is not necessary anymore for configure-->converting into Gradle STS 
-## because of "eclipseProject"
+default: showOwnTasks
 
 all: clean initBuild build
 

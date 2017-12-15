@@ -6,7 +6,7 @@ apply plugin: 'eclipse'
 version = '1.0-DEV'
 
 // Quell: https://docs.gradle.org/current/userguide/java_plugin.html
-//archivesBaseName = DEFAULT_IS_PROJECTNAME
+// archivesBaseName = DEFAULT_IS_PROJECTNAME
 
 
 
