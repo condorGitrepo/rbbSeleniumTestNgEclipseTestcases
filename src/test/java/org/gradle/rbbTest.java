@@ -35,7 +35,6 @@ public class rbbTest {
 		
 		//ChromeOptions chromeOptions = new ChromeOptions();
 		//chromeOptions.addArguments("--window-size=%s" + WINDOW_SIZE);
-		//options.addArguments("--headless");
 		//chromeOptions.addArguments("webdriver.chrome.driver", driverPath);
 		//chromeOptions.addArguments("--headless");
 		//driver = new ChromeDriver(chromeOptions);

@@ -25,11 +25,11 @@ clean:
 
 initBuild:
 	${G} ${GGWOPTS} build
-	${G} ${GGWOPTS} wrapper # Get wrapper libs
+	${G} ${GGWOPTS} wrapper     # Get wrapper libs
 
 build:
-	${GW} ${GGWOPTS} eclipse # Download Jars
-	${GW} ${GGWOPTS} assemble # Java files into JAR-file  
+	${GW} ${GGWOPTS} eclipse    # Download Jars
+	${GW} ${GGWOPTS} assemble   # Java files into JAR-file  
 	${GW} ${GGWOPTS} eclipseProject
 
 test:
