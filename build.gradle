@@ -28,15 +28,29 @@ repositories {
 
 dependencies {
 	// # gradle -q init --type groovy-library
-    compile group: 'commons-collections', name: 'commons-collections', version: '3.2'
-    compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.+'   
+	
+	//compile 'org.webjars:npm:5.0.0-1'  	
+	compile 'org.webjars.npm:phantomjs-polyfill:0.0.2' 
+	compile group: 'net.sourceforge.htmlunit', name: 'htmlunit', version: '2.29'
+	
+	/* Need to build the application */ 
+    compile group: 'commons-collections', name: 'commons-collections', version: '3.+'
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.+'
+       
+    /* Need to test application */
+    //testCompile group: 'org.webjars.npm', name: 'phantomjs', version: '2.1.+'
+    //testCompile group: 'org.webjars', name: 'npm', version: '5.+'
     testCompile group: 'junit', name: 'junit', version: '4.+'
     testCompile 'org.testng:testng:' + '6.+'
+    
 
     //compile project(':rbbSeleniumTestNgEclipseTestcases')
 
 	/* local project jars in own libs folder */
 	//compile fileTree(dir: 'libs', include: '*.jar')
+	
+	//phantomjs 'ariya:phantomjs:1.9.8:macosx@zip' //Should correspond to: https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-1.9.8-macosx.zip
+	
 	
 	/* Reference from filesystem */
 	//compile fileTree(dir: "${System.properties['user.home']}/libs/cargo", include: '*.jar')
@@ -128,6 +142,12 @@ task cleanClass(type: Delete) {
 }
 
 
+task testAgain(dependsOn: ['clean','build']) {
+	group 'MGE'
+	description '# Test again without clean and build seperately'
+	build.mustRunAfter clean
+}
+
 
 task printSomething {
 	// List taks by # gradle -q tasks --all under group-name
@@ -148,46 +168,5 @@ task printSomething {
 Quelle-Ref: https://docs.gradle.org/current/dsl/org.gradle.api.tasks.testing.Test.html 
 
 Quelle: https://docs.gradle.org/current/userguide/tutorial_gradle_command_line.html
-
-task compile {
-    doLast {
-        println 'compiling source'
-    }
-}
-
-task compileTest(dependsOn: compile) {
-    doLast {
-        println 'compiling unit tests'
-    }
-}
-
-task test(dependsOn: [compile, compileTest]) {
-    doLast {
-        println 'running unit tests'
-    }
-}
-
-task dist(dependsOn: [compile, test]) {
-    doLast {
-        println 'building the distribution'
-    }
-}
-
-
--->
-
-
-> gradle dist test -x EXCLUDE_TASK_e.g__test
-:compile
-compiling source
-:compileTest
-compiling unit tests
-:test
-running unit tests
-:dist
-building the distribution
-
-BUILD SUCCESSFUL in 0s
-4 actionable tasks: 4 executed
 
 */

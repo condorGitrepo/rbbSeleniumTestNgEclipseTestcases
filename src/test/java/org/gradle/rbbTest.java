@@ -1,6 +1,8 @@
 package org.gradle;
 
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Iterator;
 import java.util.Set;
 
@@ -9,41 +11,55 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+
+import com.google.common.collect.ImmutableMap;
 //import org.openqa.selenium.firefox.FirefoxDriver;  
 
 
+
 // kuck mal
-//  Driver.findElement(By.cssSelector("button.radius")).click();
+// Driver.findElement(By.cssSelector("button.radius")).click();
 
 
 public class rbbTest {  
 
-	public String baseUrl = "http://rbb24.de";
+	
 	public WebDriver driver;
-	
 	private String driverPath = "libs/chromedriver"; 
-	//private String WINDOW_SIZE = "300,300";
 	
+	public String baseUrl = "http://rbb24.de";
+
 	
 	@BeforeTest
 	public void launchBrowser() {
 		
-		//ChromeOptions chromeOptions = new ChromeOptions();
-		//chromeOptions.addArguments("--window-size=%s" + WINDOW_SIZE);
-		//chromeOptions.addArguments("webdriver.chrome.driver", driverPath);
-		//chromeOptions.addArguments("--headless");
-		//driver = new ChromeDriver(chromeOptions);
-		
 		System.setProperty("webdriver.chrome.driver", driverPath);
 		driver = new ChromeDriver(); 
-		
 		// Load homepage
-		driver.get(baseUrl);
+		driver.get(baseUrl);	
+		
+//		ChromeDriverService service = new ChromeDriverService.Builder()
+//               .usingDriverExecutable(new File(driverPath))
+//               .usingAnyFreePort()
+//               .withEnvironment(ImmutableMap.of("DISPLAY",":99"))
+//               .build();
+//       try {
+//           service.start();
+//       } catch (IOException e) {
+//           e.printStackTrace();
+//       }
+//       
+//		System.setProperty("webdriver.chrome.driver", "/usr/bin/chromium-browser");
+//       driver = new ChromeDriver(service);
+//       driver.get(baseUrl);	
 	}
 	
 	
@@ -52,7 +68,9 @@ public class rbbTest {
 	 * */
 	@Test(priority = 0)
 	public void testcase01() {  
-			
+		
+
+		
 		String actualTitle = driver.getTitle();
 		//String expectedTitle = "rbb|24 – Nachrichten aus Berlin und Brandenburg | rbb Rundfunk Berlin-Brandenburg";
 		String expectedTitle = "rbb|24 | rbb|24 - Nachrichten aus Berlin und Brandenburg";
