@@ -5,9 +5,9 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Iterator;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
-//import org.testng.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -15,6 +15,7 @@ import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -69,8 +70,6 @@ public class rbbTest {
 	@Test(priority = 0)
 	public void testcase01() {  
 		
-
-		
 		String actualTitle = driver.getTitle();
 		//String expectedTitle = "rbb|24 – Nachrichten aus Berlin und Brandenburg | rbb Rundfunk Berlin-Brandenburg";
 		String expectedTitle = "rbb|24 | rbb|24 - Nachrichten aus Berlin und Brandenburg";
@@ -98,13 +97,12 @@ public class rbbTest {
 	}  
 	
 	
-	@Test(priority = 7)
-	public void testcase02() {
+	@Test
+	public void testcase02() throws InterruptedException {
 		System.out.println("+++++++++++++ Serach Input +++++++++++++");
 		
 		String res = "ERGEBNISSE";
 		int i = 0;
-		
 		
 		// Send a search 
 		WebElement searchBox = driver.findElement(By.id("search_input"));

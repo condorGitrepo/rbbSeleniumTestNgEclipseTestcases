@@ -2,24 +2,24 @@
 <testng-results skipped="0" failed="0" ignored="0" total="2" passed="2">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="5054" started-at="2018-01-05T16:55:08Z" finished-at="2018-01-05T16:55:13Z">
+  <suite name="Default suite" duration-ms="6566" started-at="2018-01-05T17:59:15Z" finished-at="2018-01-05T17:59:21Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="5054" started-at="2018-01-05T16:55:08Z" finished-at="2018-01-05T16:55:13Z">
+    <test name="Default test" duration-ms="6566" started-at="2018-01-05T17:59:15Z" finished-at="2018-01-05T17:59:21Z">
       <class name="org.gradle.rbbTest">
-        <test-method status="PASS" signature="launchBrowser()[pri:0, instance:org.gradle.rbbTest@f1266c6]" name="launchBrowser" is-config="true" duration-ms="3927" started-at="2018-01-05T17:55:08Z" finished-at="2018-01-05T17:55:12Z">
+        <test-method status="PASS" signature="launchBrowser()[pri:0, instance:org.gradle.rbbTest@5c723f2d]" name="launchBrowser" is-config="true" duration-ms="4912" started-at="2018-01-05T18:59:15Z" finished-at="2018-01-05T18:59:20Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- launchBrowser -->
-        <test-method status="PASS" signature="testcase01()[pri:0, instance:org.gradle.rbbTest@f1266c6]" name="testcase01" duration-ms="34" started-at="2018-01-05T17:55:12Z" finished-at="2018-01-05T17:55:12Z">
+        <test-method status="PASS" signature="testcase01()[pri:0, instance:org.gradle.rbbTest@5c723f2d]" name="testcase01" duration-ms="123" started-at="2018-01-05T18:59:20Z" finished-at="2018-01-05T18:59:20Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testcase01 -->
-        <test-method status="PASS" signature="testcase02()[pri:7, instance:org.gradle.rbbTest@f1266c6]" name="testcase02" duration-ms="924" started-at="2018-01-05T17:55:12Z" finished-at="2018-01-05T17:55:13Z">
+        <test-method status="PASS" signature="testcase02()[pri:0, instance:org.gradle.rbbTest@5c723f2d]" name="testcase02" duration-ms="1334" started-at="2018-01-05T18:59:20Z" finished-at="2018-01-05T18:59:21Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testcase02 -->
-        <test-method status="PASS" signature="terminateBrowser()[pri:0, instance:org.gradle.rbbTest@f1266c6]" name="terminateBrowser" is-config="true" duration-ms="124" started-at="2018-01-05T17:55:13Z" finished-at="2018-01-05T17:55:13Z">
+        <test-method status="PASS" signature="terminateBrowser()[pri:0, instance:org.gradle.rbbTest@5c723f2d]" name="terminateBrowser" is-config="true" duration-ms="115" started-at="2018-01-05T18:59:21Z" finished-at="2018-01-05T18:59:21Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- terminateBrowser -->

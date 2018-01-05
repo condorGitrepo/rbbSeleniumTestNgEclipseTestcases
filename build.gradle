@@ -126,7 +126,7 @@ task listJars {
 
 task syncToCleanBin(type: Sync, dependsOn: 'cleanClass') {
  	group 'MGE' 
-	description '#'
+	description '# For TestNG'
 	// AL: run.dependsOn build, ...
     from 'build/classes/java/test/org/gradle'
     	include "**/*.class"
@@ -146,6 +146,12 @@ task testAgain(dependsOn: ['clean','build']) {
 	group 'MGE'
 	description '# Test again without clean and build seperately'
 	build.mustRunAfter clean
+}
+
+task testAgainTestNG(dependsOn: ['compileTestJava','syncToCleanBin']) {
+	group 'MGE'
+	description '# Prepare for TestNG Test'
+	syncToCleanBin.mustRunAfter compileTestJava
 }
 
 
