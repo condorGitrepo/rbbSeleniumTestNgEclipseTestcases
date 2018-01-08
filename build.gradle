@@ -30,8 +30,8 @@ dependencies {
 	// # gradle -q init --type groovy-library
 	
 	//compile 'org.webjars:npm:5.0.0-1'  	
-	compile 'org.webjars.npm:phantomjs-polyfill:0.0.2' 
-	compile group: 'net.sourceforge.htmlunit', name: 'htmlunit', version: '2.29'
+	//compile 'org.webjars.npm:phantomjs-polyfill:0.0.2' 
+	//compile group: 'net.sourceforge.htmlunit', name: 'htmlunit', version: '2.29'
 	
 	/* Need to build the application */ 
     compile group: 'commons-collections', name: 'commons-collections', version: '3.+'

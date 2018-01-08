@@ -1,6 +1,8 @@
 package org.gradle;
 
 
+import static org.testng.Assert.assertTrue;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.Iterator;
@@ -32,35 +34,30 @@ import com.google.common.collect.ImmutableMap;
 
 public class rbbTest {  
 
-	
-	public WebDriver driver;
+	private WebDriver driver;
 	private String driverPath = "libs/chromedriver"; 
 	
-	public String baseUrl = "http://rbb24.de";
+	private String baseUrl = "http://rbb24.de";
 
 	
 	@BeforeTest
 	public void launchBrowser() {
 		
-		System.setProperty("webdriver.chrome.driver", driverPath);
-		driver = new ChromeDriver(); 
-		// Load homepage
-		driver.get(baseUrl);	
+		/*  */
+		//System.setProperty("webdriver.chrome.driver", driverPath);
+		//driver = new ChromeDriver(); 
+		//// Load homepage
+		//driver.get(baseUrl);	
 		
-//		ChromeDriverService service = new ChromeDriverService.Builder()
-//               .usingDriverExecutable(new File(driverPath))
-//               .usingAnyFreePort()
-//               .withEnvironment(ImmutableMap.of("DISPLAY",":99"))
-//               .build();
-//       try {
-//           service.start();
-//       } catch (IOException e) {
-//           e.printStackTrace();
-//       }
-//       
-//		System.setProperty("webdriver.chrome.driver", "/usr/bin/chromium-browser");
-//       driver = new ChromeDriver(service);
-//       driver.get(baseUrl);	
+		/* Headless Chrome Browser */
+        System.setProperty("webdriver.chrome.driver", driverPath);
+        // Add options to Google Chrome. The window-size is important for responsive sites
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("headless");
+        options.addArguments("window-size=1200x600");
+        driver = new ChromeDriver(options);
+        driver.get(baseUrl);
+
 	}
 	
 	
