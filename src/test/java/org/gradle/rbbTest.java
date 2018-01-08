@@ -50,13 +50,13 @@ public class rbbTest {
 		//driver.get(baseUrl);	
 		
 		/* Headless Chrome Browser */
-        System.setProperty("webdriver.chrome.driver", driverPath);
-        // Add options to Google Chrome. The window-size is important for responsive sites
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("headless");
-        options.addArguments("window-size=1200x600");
-        driver = new ChromeDriver(options);
-        driver.get(baseUrl);
+		System.setProperty("webdriver.chrome.driver", driverPath);
+		// Add options to Google Chrome. The window-size is important for responsive sites
+		ChromeOptions options = new ChromeOptions();
+		options.addArguments("headless");
+		options.addArguments("window-size=1200x600");
+		driver = new ChromeDriver(options);
+		driver.get(baseUrl);
 
 	}
 	
