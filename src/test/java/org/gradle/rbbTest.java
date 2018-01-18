@@ -1,6 +1,9 @@
 package org.gradle;
 
-
+import org.testng.annotations.Test;
+import org.testng.AssertJUnit;
+import org.testng.annotations.Test;
+import org.testng.AssertJUnit;
 import static org.testng.Assert.assertTrue;
 
 import java.io.File;
@@ -15,6 +18,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
@@ -23,9 +28,11 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import com.gargoylesoftware.htmlunit.BrowserVersion;
+import com.gargoylesoftware.htmlunit.WebClient;
+import com.gargoylesoftware.htmlunit.WebWindow;
 import com.google.common.collect.ImmutableMap;
 //import org.openqa.selenium.firefox.FirefoxDriver;  
-
 
 
 // kuck mal
@@ -34,8 +41,12 @@ import com.google.common.collect.ImmutableMap;
 
 public class rbbTest {  
 
-	private WebDriver driver;
+	WebDriver driver;
 	private String driverPath = "libs/chromedriver"; 
+	//private String driverPath = "libs/geckodriver"; 
+
+	private WebClient webClient;
+	private WebWindow currentWindow;
 	
 	private String baseUrl = "http://rbb24.de";
 
@@ -43,10 +54,9 @@ public class rbbTest {
 	@BeforeTest
 	public void launchBrowser() {
 		
-		/*  */
+		/* Chrome Browser */
 		//System.setProperty("webdriver.chrome.driver", driverPath);
 		//driver = new ChromeDriver(); 
-		//// Load homepage
 		//driver.get(baseUrl);	
 		
 		/* Headless Chrome Browser */
@@ -57,7 +67,19 @@ public class rbbTest {
 		options.addArguments("window-size=1200x600");
 		driver = new ChromeDriver(options);
 		driver.get(baseUrl);
-
+		
+		
+		/* Firefox Browser */
+		//System.setProperty("webdriver.chrome.driver", driverPath);
+		//driver= new FirefoxDriver();
+		//driver.get(baseUrl);	
+		/* Headless Firefox Browser */
+		
+		/* HTMLunitDriver*/
+		//driver = new HtmlUnitDriver();
+	    //WebClient webClient = (WebClient) get(driver, "webClient");
+	    //System.out.println(webClient.getBrowserVersion());
+	    //System.out.println(webClient.getBrowserVersion().isIE());
 	}
 	
 	
@@ -89,7 +111,7 @@ public class rbbTest {
 			System.out.println("Test Failed");
 			System.out.println("+++++++++++++++++++++++++++");
 		}	
-		Assert.assertEquals(actualTitle, expectedTitle);
+		AssertJUnit.assertEquals(actualTitle, expectedTitle);
 		// -----------------------------------          
 	}  
 	
@@ -132,7 +154,7 @@ public class rbbTest {
 		}
 
 		// Test fail criteria 
-		Assert.assertEquals(searchBoxRes.getText().toLowerCase().contains(res.toLowerCase()), true);
+		AssertJUnit.assertEquals(searchBoxRes.getText().toLowerCase().contains(res.toLowerCase()), true);
 		
 		// --- Switch between popup windows
 		//String parentWindowHandler = driver.getWindowHandle(); // Store your parent window

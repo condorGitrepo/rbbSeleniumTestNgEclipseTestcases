@@ -31,23 +31,24 @@ dependencies {
 	
 	//compile 'org.webjars:npm:5.0.0-1'  	
 	//compile 'org.webjars.npm:phantomjs-polyfill:0.0.2' 
-	//compile group: 'net.sourceforge.htmlunit', name: 'htmlunit', version: '2.29'
+	compile group: 'net.sourceforge.htmlunit', name: 'htmlunit', version: '2.29'
 	
 	/* Need to build the application */ 
     compile group: 'commons-collections', name: 'commons-collections', version: '3.+'
     compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.+'
        
     /* Need to test application */
-    //testCompile group: 'org.webjars.npm', name: 'phantomjs', version: '2.1.+'
-    //testCompile group: 'org.webjars', name: 'npm', version: '5.+'
     testCompile group: 'junit', name: 'junit', version: '4.+'
     testCompile 'org.testng:testng:' + '6.+'
+    testCompile group: 'net.sourceforge.htmlunit', name: 'webdriver', version: '2.+'
     
 
     //compile project(':rbbSeleniumTestNgEclipseTestcases')
 
+
 	/* local project jars in own libs folder */
 	//compile fileTree(dir: 'libs', include: '*.jar')
+	
 	
 	//phantomjs 'ariya:phantomjs:1.9.8:macosx@zip' //Should correspond to: https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-1.9.8-macosx.zip
 	
