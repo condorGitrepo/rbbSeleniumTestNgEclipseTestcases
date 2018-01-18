@@ -77,9 +77,9 @@ public class rbbTest {
 		
 		/* HTMLunitDriver*/
 		//driver = new HtmlUnitDriver();
-	    //WebClient webClient = (WebClient) get(driver, "webClient");
-	    //System.out.println(webClient.getBrowserVersion());
-	    //System.out.println(webClient.getBrowserVersion().isIE());
+		//WebClient webClient = (WebClient) get(driver, "webClient");
+		//System.out.println(webClient.getBrowserVersion());
+		//System.out.println(webClient.getBrowserVersion().isIE());
 	}
 	
 	
