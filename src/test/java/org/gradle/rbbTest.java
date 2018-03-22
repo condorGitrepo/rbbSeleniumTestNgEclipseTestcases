@@ -49,7 +49,7 @@ public class rbbTest {
 	private WebWindow currentWindow;
 	
 	private String baseUrl = "http://rbb24.de";
-
+	
 	
 	@BeforeTest
 	public void launchBrowser() {
