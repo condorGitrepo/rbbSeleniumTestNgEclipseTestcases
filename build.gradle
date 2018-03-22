@@ -39,6 +39,7 @@ dependencies {
        
     /* Need to test application */
     testCompile group: 'junit', name: 'junit', version: '4.+'
+    //testCompile 'org.testng:testng:' + '6.+'
     testCompile 'org.testng:testng:' + '6.+'
     testCompile group: 'net.sourceforge.htmlunit', name: 'webdriver', version: '2.+'
     
@@ -61,7 +62,7 @@ dependencies {
 
 /* --- Test env --- */
 // TestSuite = running a set of testcases
-def rbbTest = project.hasProperty("Test-Suite")
+def rbbTest = project.hasProperty("TestNG")
 // ./gradlew test -PsuiteX
 // ./gradlew test -Psuite1 -Psuite2
 
@@ -77,7 +78,8 @@ test {
 	// set heap size for the test JVM(s)
 	minHeapSize = "128m"
 	maxHeapSize = "512m"
-	  
+	
+	
     /* enable testng support (default is junit) */
 	useTestNG() {
 		// loading .xml test configuration into suiteXMLfiles
@@ -88,6 +90,7 @@ test {
 			suites "src/test/resources/testng.yaml"
 		}
 	}
+	testLogging.exceptionFormat = "full"
 }
 /* --- --- --- */
 

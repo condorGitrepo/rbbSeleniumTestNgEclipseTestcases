@@ -1,11 +1,12 @@
-name: Test-Suite
+name: TestNG
 verbose: 1
 
 #listeners:
+#configFailurePolicy: skip
 
-configFailurePolicy: skip
 tests:
-  - name: Tools-QA
-    classes:
-      - org.gradle.rbbTest
+  - name: underTesting
+    classes: org.gradle.rbbTest
       
+exclusions:
+  exclusion: org.yaml.snakeyaml
