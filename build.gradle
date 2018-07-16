@@ -110,6 +110,66 @@ Project name: ${project.name}
 def bashHomePath = "$System.env.HOME"
 // AL: def bashHomePath = System.properties['user.home']
 
+task printSomething {
+	// List taks by # gradle -q tasks --all under group-name
+ 	group 'MGE' 
+	description '#'
+	doFirst {
+		println "The project name :: ${project.name} ${bashHomePath}"
+	}
+	doLast {
+		println "CREATOR...so last"
+	}
+}
+
+
+task NGclean(type: Delete) {
+ 	group 'MGE' 
+	description '# Deletes specific classes and other files'
+	delete 'bin/org/gradle/Listenklasse.class'
+	delete 'bin/org/gradle/rbbTest.class'
+	delete 'bin/org/gradle/resource.xml'
+	delete 'test-output'
+}
+task NGsyncToCleanBin(type: Sync, dependsOn: 'NGclean') {
+ 	group 'MGE' 
+	description '# Used by NG prepare'
+	// AL: run.dependsOn build, ...
+    from 'build/classes/java/test/org/gradle'
+    	include "**/*.class"
+    into 'bin/org/gradle'
+    
+    from 'build/classes/java/main/org/gradle'
+    	include "**/*.class"
+    into 'bin/org/gradle'
+}
+task NGprepare(dependsOn: ['compileTestJava','NGsyncToCleanBin']) {
+	group 'MGE'
+	description '# Prepare direcories for TestNG Testing'
+	NGsyncToCleanBin.mustRunAfter compileTestJava
+}
+
+
+task TEST_AGAIN(dependsOn: ['clean','build']) {
+	group 'MGE'
+	description '# Test again without clean and build seperately'
+	build.mustRunAfter clean
+}
+
+
+task A_PREPARE_ALL(dependsOn: ['testClasses','NGprepare']) {
+	group 'MGE'
+	description '# '
+	NGprepare.mustRunAfter testClasses
+}
+
+
+task A_CLEAN_clean_NGclean(dependsOn: ['clean','NGclean']) {
+	group 'MGE'
+	description '# clean & NGclean'
+	NGclean.mustRunAfter clean
+}
+
 
 task wrapper(type: Wrapper) {
 	group 'MGE'
@@ -123,51 +183,6 @@ task listJars {
 	description '# Verify all jar dependencies'
 	configurations.compile.each {
 		File file -> println file.name
-	}
-}
-
-
-
-task syncToCleanBin(type: Sync, dependsOn: 'cleanClass') {
- 	group 'MGE' 
-	description '# For TestNG'
-	// AL: run.dependsOn build, ...
-    from 'build/classes/java/test/org/gradle'
-    	include "**/*.class"
-    into 'bin/org/gradle'
-}
-task cleanClass(type: Delete) {
- 	group 'MGE' 
-	description '#'
-	delete 'bin/org/gradle/Listenklasse.class'
-	delete 'bin/org/gradle/rbbTest.class'
-	delete 'bin/org/gradle/resource.xml'
-	//delete 'test-output'
-}
-
-
-task testAgain(dependsOn: ['clean','build']) {
-	group 'MGE'
-	description '# Test again without clean and build seperately'
-	build.mustRunAfter clean
-}
-
-task testAgainTestNG(dependsOn: ['compileTestJava','syncToCleanBin']) {
-	group 'MGE'
-	description '# Prepare for TestNG Test'
-	syncToCleanBin.mustRunAfter compileTestJava
-}
-
-
-task printSomething {
-	// List taks by # gradle -q tasks --all under group-name
- 	group 'MGE' 
-	description '#'
-	doFirst {
-		println "The project name :: ${project.name} ${bashHomePath}"
-	}
-	doLast {
-		println "CREATOR...so last"
 	}
 }
 /* --- --- --- */
