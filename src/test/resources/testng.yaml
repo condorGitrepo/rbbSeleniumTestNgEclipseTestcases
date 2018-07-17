@@ -6,7 +6,7 @@ verbose: 1
 
 tests:
   - name: underTesting
-    classes: org.gradle.rbbTest
+    classes: org.gradle.conversario
       
 exclusions:
   exclusion: org.yaml.snakeyaml

@@ -62,7 +62,7 @@ dependencies {
 
 /* --- Test env --- */
 // TestSuite = running a set of testcases
-def rbbTest = project.hasProperty("TestNG")
+def conversario = project.hasProperty("TestNG")
 // ./gradlew test -PsuiteX
 // ./gradlew test -Psuite1 -Psuite2
 
@@ -86,7 +86,7 @@ test {
 		//suiteXmlFiles << new File("src/test/resources/testng.yaml")
 		//setSuiteXmlFiles(suiteXmlFiles)  
 		
-		if(rbbTest) {
+		if(conversario) {
 			suites "src/test/resources/testng.yaml"
 		}
 	}
@@ -128,6 +128,8 @@ task NGclean(type: Delete) {
 	description '# Deletes specific classes and other files'
 	delete 'bin/org/gradle/Listenklasse.class'
 	delete 'bin/org/gradle/rbbTest.class'
+	delete 'bin/org/gradle/base.class'
+	delete 'bin/org/gradle/conversario.class'
 	delete 'bin/org/gradle/resource.xml'
 	delete 'test-output'
 }
@@ -157,9 +159,9 @@ task TEST_AGAIN(dependsOn: ['clean','build']) {
 }
 
 
-task A_PREPARE_ALL(dependsOn: ['testClasses','NGprepare']) {
+task A_PREPARE_Unit_NG(dependsOn: ['testClasses','NGprepare']) {
 	group 'MGE'
-	description '# '
+	description '# Prepare for Unit- & NG-Testing'
 	NGprepare.mustRunAfter testClasses
 }
 
