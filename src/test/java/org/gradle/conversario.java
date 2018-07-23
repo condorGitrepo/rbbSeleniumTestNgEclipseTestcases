@@ -133,9 +133,8 @@ public class conversario {
 			throw new SkipException("Skipping / Ignoring");
 		}*/
 		
-		// Jenkins break up when this occures
-		//AssertJUnit.assertTrue(s2text.contains(tempString));
-		org.testng.Assert.fail("you wandered onto the wrong path");
+		AssertJUnit.assertTrue(s2text.contains(tempString));
+		//org.testng.Assert.fail("you wandered onto the wrong path");
 
 	} 
 	
