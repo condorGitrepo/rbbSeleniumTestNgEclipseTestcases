@@ -124,18 +124,10 @@ public class conversario {
 	public void checkGoodComment() { 
 		driver.get(baseUrl);	
 		
-		String tempString="GOODCOMMENT";
+		String expectedString= Integer.toString(this.GoodNr);
 		String s2text = driver.findElement(By.xpath("//article[@class='comment']")).getAttribute("innerText");
 
-		/*if (s2text.contains(tempString) == true) {
-			System.out.println("GOODCOMMENT found: " + this.GoodNr);
-		} else {
-			throw new SkipException("Skipping / Ignoring");
-		}*/
-		
-		AssertJUnit.assertTrue(s2text.contains(tempString));
-		//org.testng.Assert.fail("you wandered onto the wrong path");
-
+		AssertJUnit.assertTrue(s2text.contains(expectedString));
 	} 
 	
 	
@@ -143,14 +135,11 @@ public class conversario {
 	public void checkBadComment() { 
 		driver.get(baseUrl);	
 		
-		String tempString="BADCOMMENT";
+		String expectedString="BADCOMMENT";
+		//String expectedString= Integer.toString(this.BadNr);
 		String s2text = driver.findElement(By.xpath("//article[@class='comment']")).getAttribute("innerText");
 
-		if (s2text.contains(tempString) == true) {
-			System.out.println("BADCOMMENT found: " + this.BadNr);
-		} else {
-			throw new SkipException("Skipping / Ignoring");
-		}		
+		AssertJUnit.assertTrue(s2text.contains(expectedString));
 	}
 	
 	

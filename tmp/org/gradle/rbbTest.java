@@ -155,6 +155,15 @@ public class rbbTest {
 		System.out.println("+++++++++++++ END Serach Input +++++++++++++");
 
 		//Assert.assertEquals(actualTitle, expectedTitle);
+		
+		/*if (s2text.contains(tempString) == true) {
+		System.out.println("GOODCOMMENT found: " + this.GoodNr);
+		} else {
+			throw new SkipException("Skipping / Ignoring");
+		}*/
+		
+		AssertJUnit.assertTrue(s2text.contains(tempString));
+		//org.testng.Assert.fail("you wandered onto the wrong path");
 	}
 	
 	
