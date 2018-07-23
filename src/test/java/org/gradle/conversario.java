@@ -2,6 +2,9 @@ package org.gradle;
 
 import org.testng.annotations.Test;
 import org.testng.AssertJUnit;
+import org.testng.annotations.Test;
+
+import org.testng.AssertJUnit;
 import org.testng.SkipException;
 
 import org.openqa.selenium.By;
@@ -86,7 +89,6 @@ public class conversario {
 		} catch (InterruptedException e) { 
 			e.printStackTrace();
 		}	
-		AssertJUnit.assertEquals("AAA", "AAA");
 	}  
 	
 	
@@ -115,7 +117,6 @@ public class conversario {
 		} catch (InterruptedException e) { 
 			e.printStackTrace();
 		}
-		AssertJUnit.assertEquals("AAA", "AAA");
 	}
 	
 	
@@ -126,11 +127,11 @@ public class conversario {
 		String tempString="GOODCOMMENT";
 		String s2text = driver.findElement(By.xpath("//article[@class='comment']")).getAttribute("innerText");
 
-		if (s2text.contains(tempString) == true) {
-			System.out.println("GOODCOMMENT found: " + this.GoodNr);
-		} else {
-			throw new SkipException("Skipping / Ignoring - Script not Ready for Execution");
-		}		
+		//if (s2text.contains(tempString) == true) {
+		//	System.out.println("GOODCOMMENT found: " + this.GoodNr);
+		//} else {
+			AssertJUnit.assertTrue(s2text.contains(tempString));
+		//}		
 	} 
 	
 	
@@ -144,7 +145,7 @@ public class conversario {
 		if (s2text.contains(tempString) == true) {
 			System.out.println("BADCOMMENT found: " + this.BadNr);
 		} else {
-			throw new SkipException("Skipping / Ignoring - Script not Ready for Execution");
+			throw new SkipException("Skipping / Ignoring");
 		}		
 	}
 	

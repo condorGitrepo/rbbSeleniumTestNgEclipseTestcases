@@ -135,7 +135,7 @@ task NGclean(type: Delete) {
 }
 task NGsyncToCleanBin(type: Sync, dependsOn: 'NGclean') {
  	group 'MGE' 
-	description '# Used by NG prepare'
+	description '# Syncs necessary *.classes to /bin directory'
 	// AL: run.dependsOn build, ...
     from 'build/classes/java/test/org/gradle'
     	include "**/*.class"
@@ -147,7 +147,7 @@ task NGsyncToCleanBin(type: Sync, dependsOn: 'NGclean') {
 }
 task NGprepare(dependsOn: ['compileTestJava','NGsyncToCleanBin']) {
 	group 'MGE'
-	description '# Prepare direcories for TestNG Testing'
+	description '# Prepare directories for TestNG Testing'
 	NGsyncToCleanBin.mustRunAfter compileTestJava
 }
 
