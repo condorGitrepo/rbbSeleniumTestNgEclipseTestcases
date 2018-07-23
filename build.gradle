@@ -172,12 +172,6 @@ task A_CLEAN_clean_NGclean(dependsOn: ['clean','NGclean']) {
 	NGclean.mustRunAfter clean
 }
 
-task AAA_Smoke_Test(type: Test, dependsOn: ['clean','build']) {
-	group 'MGE'
-    description "# SmokeTest"
-    ignoreFailures = true
-}
-
 task wrapper(type: Wrapper) {
 	group 'MGE'
 	description '# Download gradlew wrapper, if necessary'
