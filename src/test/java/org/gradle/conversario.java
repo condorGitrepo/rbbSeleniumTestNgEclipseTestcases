@@ -135,7 +135,7 @@ public class conversario {
 		
 		// Jenkins break up when this occures
 		//AssertJUnit.assertTrue(s2text.contains(tempString));
-		//org.testng.Assert.fail("you wandered onto the wrong path");
+		org.testng.Assert.fail("you wandered onto the wrong path");
 
 	} 
 	
