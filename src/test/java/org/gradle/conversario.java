@@ -91,8 +91,13 @@ public class conversario {
 	}  
 	
 	
-	@Test(priority = 2)
+	@Test(priority = 1)
 	public void sendBadComment() { 	
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) { 
+			e.printStackTrace();
+		}
 		driver.get(baseFormUrl);	
 		
 		this.BadNr = ThreadLocalRandom.current().nextInt(100, 998 + 1);
@@ -107,7 +112,7 @@ public class conversario {
 		
 		// Fill comment into form 
 		driver.findElement(By.id("mailpar_4")).click();
-		(new Actions(driver)).sendKeys("BadComment-"+ BadNr +": Das ist ein bescheuerter Kommentar gegen den Rundfunk. Mit Schimpfwörtern wie damisch depp depperter oder Doldi mit einer Drudschen an der Spitzen.").perform();
+		(new Actions(driver)).sendKeys("BadComment-"+ BadNr +": Das ist ein böser Kommentar, mit Schimpfwörtern wie damisch depp depperter oder Doldi mit einer Drudschen an der Spitzen.").perform();
 		
 		driver.findElement(By.xpath("//button[@value='Abschicken'][@name='savecomment'][@type='submit']")).click();
 		
