@@ -72,7 +72,7 @@ public class conversario {
 		// Fill name into form 
 		driver.findElement(By.id("mailpar_1")).click();
 		//driver.findElement(By.id("mailpar_1")).sendKeys("RBB_Goodboy");
-		(new Actions(driver)).sendKeys("RBB_Goodboy").perform();
+		(new Actions(driver)).sendKeys("TPS-Online_Goodboy").perform();
 		
 		// Fill e-mail into form 
 		driver.findElement(By.id("mailpar_2")).click();
@@ -80,19 +80,18 @@ public class conversario {
 		
 		// Fill comment into form 
 		driver.findElement(By.id("mailpar_4")).click();
-		(new Actions(driver)).sendKeys("NiceComment-"+ GoodNr +": Bitte ein Bild von der heiligen Magdalena (vor-, nach-, während der Sünde?).").perform();
-		
-		//driver.findElement(By.xpath("//button[@value='Abschicken'][@name='savecomment'][@type='submit']")).click();
-		
+		(new Actions(driver)).sendKeys("NiceComment-"+ GoodNr).perform();
+		//Bitte ein Bild von der heiligen Magdalena. (vor-, nach-, während der Sünde?)
+		driver.findElement(By.xpath("//button[@value='Abschicken'][@name='savecomment'][@type='submit']")).click();
 		try {
-			Thread.sleep(1000);
+			Thread.sleep(2000);
 		} catch (InterruptedException e) { 
 			e.printStackTrace();
-		}	
+		}
 	}  
 	
 	
-	@Test(priority = 0)
+	@Test(priority = 2)
 	public void sendBadComment() { 	
 		driver.get(baseFormUrl);	
 		
@@ -100,7 +99,7 @@ public class conversario {
 		
 		// Fill name into form 
 		driver.findElement(By.id("mailpar_1")).click();
-		(new Actions(driver)).sendKeys("RBB_Badboy").perform();
+		(new Actions(driver)).sendKeys("TPS-Online_Badboy").perform();
 		
 		// Fill e-mail into form 
 		driver.findElement(By.id("mailpar_2")).click();
@@ -108,9 +107,9 @@ public class conversario {
 		
 		// Fill comment into form 
 		driver.findElement(By.id("mailpar_4")).click();
-		(new Actions(driver)).sendKeys("BadComment-"+ BadNr +": Das ist ein bescheuerter Kommentar gegen den Rundfunk. Mit Schimpfwörtern wie damisch depp depperter oder Doldi mit einer Drudschen an der Spitzen. Blöder Scheiß funktioniert wieder net.").perform();
+		(new Actions(driver)).sendKeys("BadComment-"+ BadNr +": Das ist ein bescheuerter Kommentar gegen den Rundfunk. Mit Schimpfwörtern wie damisch depp depperter oder Doldi mit einer Drudschen an der Spitzen.").perform();
 		
-		//driver.findElement(By.xpath("//button[@value='Abschicken'][@name='savecomment'][@type='submit']")).click();
+		driver.findElement(By.xpath("//button[@value='Abschicken'][@name='savecomment'][@type='submit']")).click();
 		
 		try {
 			Thread.sleep(2000);
@@ -120,31 +119,67 @@ public class conversario {
 	}
 	
 	
-	@Test(priority = 1)
+	@Test(priority = 5)
 	public void checkGoodComment() { 
-		driver.get(baseUrl);	
-		
-		String expectedString= Integer.toString(this.GoodNr);
-		String s2text = driver.findElement(By.xpath("//article[@class='comment']")).getAttribute("innerText");
+		driver.get(baseUrl);
 
-		AssertJUnit.assertTrue(s2text.contains(expectedString));
+		String expectedString = Integer.toString(this.GoodNr);
+		String s2text = ""; 
+		
+		int i;
+		for (i=1; i<=11; i++) {
+			try {
+				Thread.sleep(2000);
+			} catch (InterruptedException e) { 
+				e.printStackTrace();
+			}
+			
+			driver.get(baseUrl);
+			s2text = driver.findElement(By.xpath("//article[@class='comment']")).getAttribute("innerText");
+			
+			if (s2text.contains(expectedString)==true) {
+				break;
+			}
+			System.out.println("Waiting for GoodComment since: " + (i*2) + "s");
+		}
+		
+		if (i >= 11) {
+			throw new SkipException("Skipped: Timeout by checking GoodComment");
+		} else {
+			AssertJUnit.assertTrue(s2text.contains(expectedString));			
+		}
 	} 
 	
 	
-	@Test(priority = 1)
+	@Test(priority = 7)
 	public void checkBadComment() { 
 		driver.get(baseUrl);	
 		
-		String expectedString="BADCOMMENT";
-		//String expectedString= Integer.toString(this.BadNr);
-		String s2text = driver.findElement(By.xpath("//article[@class='comment']")).getAttribute("innerText");
-
-		AssertJUnit.assertTrue(s2text.contains(expectedString));
+		String expectedString= Integer.toString(this.BadNr);
+		String s2text = ""; 
+		
+		int i;
+		for (i=1; i<=61; i++) {
+			try {
+				Thread.sleep(2000);
+			} catch (InterruptedException e) { 
+				e.printStackTrace();
+			}
+			
+			driver.get(baseUrl);
+			s2text = driver.findElement(By.xpath("//article[@class='comment']")).getAttribute("innerText");
+			
+			if (s2text.contains(expectedString)==true) {
+				break;
+			}
+			System.out.println("Waiting for BadComment since: " + (i*2) + "s");
+		}
+		AssertJUnit.assertFalse(s2text.contains(expectedString));			
 	}
-	
 	
 	@AfterTest
     public void terminateBrowser(){
+		System.out.println("Closing tests");
 		driver.close();
         //driver.quit();
 	}
