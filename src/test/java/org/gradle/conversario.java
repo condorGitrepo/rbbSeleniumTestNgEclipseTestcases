@@ -93,11 +93,6 @@ public class conversario {
 	
 	@Test(priority = 1)
 	public void sendBadComment() { 	
-		try {
-			Thread.sleep(1000);
-		} catch (InterruptedException e) { 
-			e.printStackTrace();
-		}
 		driver.get(baseFormUrl);	
 		
 		this.BadNr = ThreadLocalRandom.current().nextInt(100, 998 + 1);
@@ -159,7 +154,7 @@ public class conversario {
 	@Test(priority = 7)
 	public void checkBadComment() { 
 		driver.get(baseUrl);	
-		
+				
 		String expectedString= Integer.toString(this.BadNr);
 		String s2text = ""; 
 		
