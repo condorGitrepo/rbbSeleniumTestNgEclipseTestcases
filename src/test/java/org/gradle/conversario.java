@@ -107,7 +107,7 @@ public class conversario {
 		
 		// Fill comment into form 
 		driver.findElement(By.id("mailpar_4")).click();
-		(new Actions(driver)).sendKeys("BadComment-"+ BadNr +": Das ist ein böser Kommentar, mit Schimpfwörtern wie damisch depp depperter oder Doldi mit einer Drudschen an der Spitzen.").perform();
+		(new Actions(driver)).sendKeys("BadComment-"+ BadNr +": Das ist ein boeser Kommentar, mit Schimpfwoertern wie damisch depp depperter oder Doldi mit einer Drudschen an der Spitzen.").perform();
 		
 		//driver.findElement(By.xpath("//button[@value='Abschicken'][@name='savecomment'][@type='submit']")).click();
 		
