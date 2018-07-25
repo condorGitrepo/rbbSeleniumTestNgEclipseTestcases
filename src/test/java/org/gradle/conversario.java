@@ -82,7 +82,7 @@ public class conversario {
 		driver.findElement(By.id("mailpar_4")).click();
 		(new Actions(driver)).sendKeys("NiceComment-"+ GoodNr).perform();
 		//Bitte ein Bild von der heiligen Magdalena. (vor-, nach-, während der Sünde?)
-		driver.findElement(By.xpath("//button[@value='Abschicken'][@name='savecomment'][@type='submit']")).click();
+		//driver.findElement(By.xpath("//button[@value='Abschicken'][@name='savecomment'][@type='submit']")).click();
 		try {
 			Thread.sleep(2000);
 		} catch (InterruptedException e) { 
@@ -109,7 +109,7 @@ public class conversario {
 		driver.findElement(By.id("mailpar_4")).click();
 		(new Actions(driver)).sendKeys("BadComment-"+ BadNr +": Das ist ein böser Kommentar, mit Schimpfwörtern wie damisch depp depperter oder Doldi mit einer Drudschen an der Spitzen.").perform();
 		
-		driver.findElement(By.xpath("//button[@value='Abschicken'][@name='savecomment'][@type='submit']")).click();
+		//driver.findElement(By.xpath("//button[@value='Abschicken'][@name='savecomment'][@type='submit']")).click();
 		
 		try {
 			Thread.sleep(2000);
@@ -127,7 +127,7 @@ public class conversario {
 		String s2text = ""; 
 		
 		int i;
-		for (i=1; i<=11; i++) {
+		for (i=1; i<=10; i++) {
 			try {
 				Thread.sleep(2000);
 			} catch (InterruptedException e) { 
@@ -142,12 +142,7 @@ public class conversario {
 			}
 			System.out.println("Waiting for GoodComment since: " + (i*2) + "s");
 		}
-		
-		if (i >= 11) {
-			throw new SkipException("Skipped: Timeout by checking GoodComment");
-		} else {
-			AssertJUnit.assertTrue(s2text.contains(expectedString));			
-		}
+		AssertJUnit.assertTrue(s2text.contains(expectedString));			
 	} 
 	
 	
@@ -159,7 +154,7 @@ public class conversario {
 		String s2text = ""; 
 		
 		int i;
-		for (i=1; i<=61; i++) {
+		for (i=1; i<=11; i++) {
 			try {
 				Thread.sleep(2000);
 			} catch (InterruptedException e) { 
