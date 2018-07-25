@@ -51,6 +51,7 @@ public class conversario {
 		ChromeOptions options = new ChromeOptions();
 		options.addArguments("headless");
 		options.addArguments("window-size=1200x900");
+		options.addArguments("--no-sandbox");
 		driver = new ChromeDriver(options);
 		driver.get(baseUrl);
 	}
