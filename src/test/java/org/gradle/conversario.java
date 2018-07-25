@@ -51,8 +51,8 @@ public class conversario {
 		ChromeOptions options = new ChromeOptions();
 		options.addArguments("headless");
 		options.addArguments("window-size=1200x900");
-		options.addArguments("--no-sandbox");
 		options.addArguments("--ppapi-flash-path=/usr/lib/adobe-flashplugin/libpepflashplayer.so");
+		options.addArguments("--no-sandbox");
 		driver = new ChromeDriver(options);
 		driver.get(baseUrl);
 	}
@@ -144,7 +144,7 @@ public class conversario {
 			}
 			System.out.println("Waiting for GoodComment since: " + (i*2) + "s");
 		}
-		AssertJUnit.assertTrue(s2text.contains(expectedString));			
+		AssertJUnit.assertFalse(s2text.contains(expectedString));			
 	} 
 	
 	
