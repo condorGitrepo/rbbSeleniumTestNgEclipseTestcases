@@ -81,7 +81,7 @@ public class conversario {
 		// Fill comment into form 
 		driver.findElement(By.id("mailpar_4")).click();
 		(new Actions(driver)).sendKeys("NiceComment-"+ GoodNr).perform();
-		//Bitte ein Bild von der heiligen Magdalena. (vor-, nach-, während der Sünde?)
+		//Bitte ein Bild von der heiligen Magdalena. (vor-, nach-, waehrend der Suende?)
 		//driver.findElement(By.xpath("//button[@value='Abschicken'][@name='savecomment'][@type='submit']")).click();
 		try {
 			Thread.sleep(2000);
