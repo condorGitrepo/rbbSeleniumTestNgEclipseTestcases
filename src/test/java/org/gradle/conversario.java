@@ -41,18 +41,18 @@ public class conversario {
 	public void launchBrowser() {
 		
 		/* VISUALIZE Chrome Browser */
-		/*System.setProperty("webdriver.chrome.driver", driverPath);
+		System.setProperty("webdriver.chrome.driver", driverPath);
 		driver = new ChromeDriver(); 
-		driver.get(baseUrl);*/
+		driver.get(baseUrl);
 		
 		/* HEADLESS Chrome Browser */
-		System.setProperty("webdriver.chrome.driver", driverPath);
+		/*System.setProperty("webdriver.chrome.driver", driverPath);
 		// Add options to Google Chrome. The window-size is important for responsive sites
 		ChromeOptions options = new ChromeOptions();
 		options.addArguments("headless");
 		options.addArguments("window-size=1200x600");
 		driver = new ChromeDriver(options);
-		driver.get(baseFormUrl);
+		driver.get(baseFormUrl);*/
 	}
 	
 	
