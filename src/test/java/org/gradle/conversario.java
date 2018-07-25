@@ -52,6 +52,7 @@ public class conversario {
 		options.addArguments("headless");
 		options.addArguments("window-size=1200x900");
 		options.addArguments("--no-sandbox");
+		options.addArguments("--ppapi-flash-path=/usr/lib/adobe-flashplugin/libpepflashplayer.so");
 		driver = new ChromeDriver(options);
 		driver.get(baseUrl);
 	}
