@@ -43,7 +43,7 @@ public class conversario {
 		/* VISUALIZE Chrome Browser */
 		/*System.setProperty("webdriver.chrome.driver", driverPath);
 		driver = new ChromeDriver(); 
-		driver.get(baseUrl);*/
+		driver.get(baseFormUrl);*/
 		
 		/* HEADLESS Chrome Browser */
 		System.setProperty("webdriver.chrome.driver", driverPath);
@@ -51,10 +51,10 @@ public class conversario {
 		ChromeOptions options = new ChromeOptions();
 		options.addArguments("headless");
 		options.addArguments("window-size=1200x900");
-		options.addArguments("--ppapi-flash-path=/usr/lib/adobe-flashplugin/libpepflashplayer.so");
+		//options.addArguments("--ppapi-flash-path=/usr/lib/adobe-flashplugin/libpepflashplayer.so");
 		options.addArguments("--no-sandbox");
 		driver = new ChromeDriver(options);
-		driver.get(baseUrl);
+		driver.get(baseFormUrl);
 	}
 	
 	
@@ -64,10 +64,13 @@ public class conversario {
 	 * */
 	@Test(priority = 0)
 	public void sendNiceComment() { 
-		driver.get(baseFormUrl);	
+		driver.get(baseFormUrl);
 		
 		this.GoodNr = ThreadLocalRandom.current().nextInt(100, 998 + 1);
-	
+		
+		//driver.findElement(By.xpath("//button[@id='new_comment_link']")).click();
+		//driver.findElement(By.xpath("//button[@value='Abschicken'][@name='savecomment'][@type='submit']")).click();
+		
 		//JavascriptExecutor js = (JavascriptExecutor)driver;
 		//String sText =  js.executeScript("return document.documentElement.innerText;").toString();
 		
@@ -84,7 +87,9 @@ public class conversario {
 		driver.findElement(By.id("mailpar_4")).click();
 		(new Actions(driver)).sendKeys("NiceComment-"+ GoodNr).perform();
 		//Bitte ein Bild von der heiligen Magdalena. (vor-, nach-, waehrend der Suende?)
+		
 		driver.findElement(By.xpath("//button[@value='Abschicken'][@name='savecomment'][@type='submit']")).click();
+		
 		try {
 			Thread.sleep(2000);
 		} catch (InterruptedException e) { 
@@ -94,6 +99,37 @@ public class conversario {
 	
 	
 	@Test(priority = 1)
+	public void checkNiceComment() { 
+		driver.get(baseUrl);
+		
+		String expectedString = Integer.toString(this.GoodNr);
+		String s2text = ""; 
+
+		int i;
+		for (i=1; i<=10; i++) {
+			try {
+				Thread.sleep(2000);
+			} catch (InterruptedException e) { 
+				e.printStackTrace();
+			}
+			
+			driver.get(baseUrl);
+			s2text = driver.findElement(By.xpath("//article[@class='comment']")).getAttribute("innerText");
+			
+			if (s2text.contains(expectedString)==true) {
+				break;
+			}
+			System.out.println("Waiting for GoodComment since: " + (i*2) + "s");
+		}
+		
+		System.out.println("AAA:" + expectedString);
+		System.out.println("s2text:" + s2text);
+
+		AssertJUnit.assertTrue(s2text.contains(expectedString));	
+	} 
+	
+	/*
+	@Test(priority = 2)
 	public void sendBadComment() { 	
 		driver.get(baseFormUrl);	
 		
@@ -111,7 +147,7 @@ public class conversario {
 		driver.findElement(By.id("mailpar_4")).click();
 		(new Actions(driver)).sendKeys("BadComment-"+ BadNr +": Das ist ein boeser Kommentar, mit Schimpfwoertern wie damisch depp depperter oder Doldi mit einer Drudschen an der Spitzen.").perform();
 		
-		driver.findElement(By.xpath("//button[@value='Abschicken'][@name='savecomment'][@type='submit']")).click();
+		//driver.findElement(By.xpath("//button[@value='Abschicken'][@name='savecomment'][@type='submit']")).click();
 		
 		try {
 			Thread.sleep(2000);
@@ -121,36 +157,7 @@ public class conversario {
 	}
 	
 	
-	@Test(priority = 5)
-	public void checkGoodComment() { 
-		driver.get(baseUrl);
-
-		String expectedString = Integer.toString(this.GoodNr);
-		String s2text = ""; 
-		
-		int i;
-		for (i=1; i<=10; i++) {
-			try {
-				Thread.sleep(2000);
-			} catch (InterruptedException e) { 
-				e.printStackTrace();
-			}
-			
-			driver.get(baseUrl);
-			s2text = driver.findElement(By.xpath("//article[@class='comment']")).getAttribute("innerText");
-			
-			if (s2text.contains(expectedString)==true) {
-				break;
-			}
-			System.out.println("Waiting for GoodComment since: " + (i*2) + "s");
-		}
-		System.out.println("s2text:" + expectedString + s2text);
-
-		AssertJUnit.assertTrue(s2text.contains(expectedString));	
-	} 
-	
-	
-	@Test(priority = 7)
+	@Test(priority = 3)
 	public void checkBadComment() { 
 		driver.get(baseUrl);	
 				
@@ -176,7 +183,7 @@ public class conversario {
 		System.out.println("s2text:" + expectedString + s2text);
 
 		AssertJUnit.assertFalse(s2text.contains(expectedString));	
-	}
+	}*/
 	
 	@AfterTest
     public void terminateBrowser(){
