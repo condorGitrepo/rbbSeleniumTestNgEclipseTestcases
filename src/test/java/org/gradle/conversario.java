@@ -61,7 +61,7 @@ public class conversario {
 	
 	/* priority 0    	(lowest, is going to be executed first)
 	 * priority 7		(highest, is going to be executed last)
-	 * *//*
+	 * */
 	@Test(priority = 0)
 	public void sendNiceComment() { 
 		driver.get(baseFormUrl);
@@ -94,7 +94,7 @@ public class conversario {
 		}
 	} 
 	
-	/*
+	
 	@Test(priority = 1)
 	public void checkNiceComment() { 
 		driver.get(baseFormUrl);
@@ -122,7 +122,7 @@ public class conversario {
 		System.out.println("s2text:" + s2text);
 
 		AssertJUnit.assertTrue(s2text.contains(expectedString));	
-	} */
+	} 
 	
 	
 	@Test(priority = 2)
