@@ -163,7 +163,7 @@ public class conversario {
 		
 		System.out.println("BadNr:" + expectedString);
 		int i;
-		for (i=1; i<=11; i++) {
+		for (i=1; i<31; i++) {
 			try {
 				Thread.sleep(2000);
 			} catch (InterruptedException e) { 
