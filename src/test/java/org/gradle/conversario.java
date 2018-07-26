@@ -2,7 +2,6 @@ package org.gradle;
 
 import org.testng.annotations.Test;
 import org.testng.AssertJUnit;
-import org.testng.annotations.Test;
 
 import org.testng.AssertJUnit;
 import org.testng.SkipException;
@@ -128,6 +127,8 @@ public class conversario {
 	@Test(priority = 2)
 	public void sendBadComment() { 	
 		driver.get(baseFormUrl);	
+		driver.close();
+		launchBrowser(); 
 		
 		this.BadNr = ThreadLocalRandom.current().nextInt(100, 998 + 1);
 		
