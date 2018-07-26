@@ -34,7 +34,7 @@ public class conversario {
 	//private String baseFormUrl = "https://rbb-s0.w3.rbb-online.de/content/rbb/r24/test/mge/conversation.htm/writecomment=true.html#top";	
 	
 
-	private int GoodNr;
+	private int NiceNr;
 	private int BadNr;
 	
 	@BeforeTest
@@ -66,7 +66,7 @@ public class conversario {
 	public void sendNiceComment() { 
 		driver.get(baseFormUrl);
 		
-		this.GoodNr = ThreadLocalRandom.current().nextInt(100, 998 + 1);
+		this.NiceNr = ThreadLocalRandom.current().nextInt(100, 998 + 1);
 		
 		//JavascriptExecutor js = (JavascriptExecutor)driver;
 		//String sText =  js.executeScript("return document.documentElement.innerText;").toString();
@@ -82,7 +82,7 @@ public class conversario {
 		
 		// Fill comment into form 
 		driver.findElement(By.id("mailpar_4")).click();
-		(new Actions(driver)).sendKeys("NiceComment-"+ GoodNr).perform();
+		(new Actions(driver)).sendKeys("NiceComment-"+ NiceNr).perform();
 		//Bitte ein Bild von der heiligen Magdalena. (vor-, nach-, waehrend der Suende?)
 		
 		driver.findElement(By.xpath("//button[@value='Abschicken'][@name='savecomment'][@type='submit']")).click();
@@ -99,7 +99,7 @@ public class conversario {
 	public void checkNiceComment() { 
 		driver.get(baseUrl);
 		
-		String expectedString = Integer.toString(this.GoodNr);
+		String expectedString = Integer.toString(this.NiceNr);
 		String s2text = ""; 
 
 		int i;
@@ -119,7 +119,7 @@ public class conversario {
 			System.out.println("Waiting for GoodComment since: " + (i*2) + "s");
 		}
 		
-		System.out.println("AAA:" + expectedString);
+		System.out.println("NiceNr:" + expectedString);
 		System.out.println("s2text:" + s2text);
 
 		AssertJUnit.assertTrue(s2text.contains(expectedString));	
@@ -178,7 +178,7 @@ public class conversario {
 			System.out.println("Waiting for BadComment since: " + (i*2) + "s");
 		}
 		
-		System.out.println("AAA:" + expectedString);
+		System.out.println("BadNr:" + expectedString);
 		System.out.println("s2text:" + s2text);
 		
 		AssertJUnit.assertFalse(s2text.contains(expectedString));	
