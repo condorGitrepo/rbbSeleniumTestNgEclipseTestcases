@@ -97,11 +97,12 @@ public class conversario {
 	
 	@Test(priority = 1)
 	public void checkNiceComment() { 
-		driver.get(baseUrl);
+		driver.get(baseFormUrl);
 		
 		String expectedString = Integer.toString(this.NiceNr);
 		String s2text = ""; 
 
+		System.out.println("NiceNr:" + expectedString);
 		int i;
 		for (i=1; i<=10; i++) {
 			try {
@@ -118,8 +119,6 @@ public class conversario {
 			}
 			System.out.println("Waiting for GoodComment since: " + (i*2) + "s");
 		}
-		
-		System.out.println("NiceNr:" + expectedString);
 		System.out.println("s2text:" + s2text);
 
 		AssertJUnit.assertTrue(s2text.contains(expectedString));	
@@ -156,11 +155,12 @@ public class conversario {
 	
 	@Test(priority = 3)
 	public void checkBadComment() { 
-		driver.get(baseUrl);	
+		driver.get(baseFormUrl);	
 				
 		String expectedString= Integer.toString(this.BadNr);
 		String s2text = ""; 
 		
+		System.out.println("BadNr:" + expectedString);
 		int i;
 		for (i=1; i<=11; i++) {
 			try {
@@ -177,8 +177,6 @@ public class conversario {
 			}
 			System.out.println("Waiting for BadComment since: " + (i*2) + "s");
 		}
-		
-		System.out.println("BadNr:" + expectedString);
 		System.out.println("s2text:" + s2text);
 		
 		AssertJUnit.assertFalse(s2text.contains(expectedString));	
