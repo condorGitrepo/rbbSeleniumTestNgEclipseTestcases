@@ -127,9 +127,8 @@ public class conversario {
 	@Test(priority = 2)
 	public void sendBadComment() { 	
 		driver.get(baseFormUrl);	
-		//driver.close();
-		//launchBrowser(); 
-		driver.manage().deleteAllCookies();
+		driver.close();
+		launchBrowser(); 
 		
 		this.BadNr = ThreadLocalRandom.current().nextInt(100, 998 + 1);
 		
