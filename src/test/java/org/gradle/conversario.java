@@ -144,6 +144,8 @@ public class conversario {
 			}
 			System.out.println("Waiting for GoodComment since: " + (i*2) + "s");
 		}
+		System.out.println("s2text:" + expectedString + s2text);
+
 		AssertJUnit.assertTrue(s2text.contains(expectedString));	
 	} 
 	
@@ -171,6 +173,8 @@ public class conversario {
 			}
 			System.out.println("Waiting for BadComment since: " + (i*2) + "s");
 		}
+		System.out.println("s2text:" + expectedString + s2text);
+
 		AssertJUnit.assertFalse(s2text.contains(expectedString));	
 	}
 	
