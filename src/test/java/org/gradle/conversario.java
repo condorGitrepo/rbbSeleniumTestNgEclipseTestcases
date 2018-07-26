@@ -52,7 +52,7 @@ public class conversario {
 		options.addArguments("headless");
 		options.addArguments("window-size=1200x900");
 		//options.addArguments("--ppapi-flash-path=/usr/lib/adobe-flashplugin/libpepflashplayer.so");
-		options.addArguments("--no-sandbox");
+		//options.addArguments("--no-sandbox");
 		driver = new ChromeDriver(options);
 		driver.get(baseFormUrl);
 	}
@@ -177,8 +177,10 @@ public class conversario {
 			}
 			System.out.println("Waiting for BadComment since: " + (i*2) + "s");
 		}
-		System.out.println("s2text:" + expectedString + s2text);
-
+		
+		System.out.println("AAA:" + expectedString);
+		System.out.println("s2text:" + s2text);
+		
 		AssertJUnit.assertFalse(s2text.contains(expectedString));	
 	}
 	
