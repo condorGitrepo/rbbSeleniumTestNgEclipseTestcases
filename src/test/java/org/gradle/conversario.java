@@ -68,9 +68,6 @@ public class conversario {
 		
 		this.GoodNr = ThreadLocalRandom.current().nextInt(100, 998 + 1);
 		
-		//driver.findElement(By.xpath("//button[@id='new_comment_link']")).click();
-		//driver.findElement(By.xpath("//button[@value='Abschicken'][@name='savecomment'][@type='submit']")).click();
-		
 		//JavascriptExecutor js = (JavascriptExecutor)driver;
 		//String sText =  js.executeScript("return document.documentElement.innerText;").toString();
 		
@@ -128,7 +125,7 @@ public class conversario {
 		AssertJUnit.assertTrue(s2text.contains(expectedString));	
 	} 
 	
-	/*
+	
 	@Test(priority = 2)
 	public void sendBadComment() { 	
 		driver.get(baseFormUrl);	
@@ -183,7 +180,7 @@ public class conversario {
 		System.out.println("s2text:" + expectedString + s2text);
 
 		AssertJUnit.assertFalse(s2text.contains(expectedString));	
-	}*/
+	}
 	
 	@AfterTest
     public void terminateBrowser(){
