@@ -40,12 +40,12 @@ public class conversario {
 	public void launchBrowser() {
 		
 		/* VISUALIZE Chrome Browser */
-		/*System.setProperty("webdriver.chrome.driver", driverPath);
+		System.setProperty("webdriver.chrome.driver", driverPath);
 		driver = new ChromeDriver(); 
-		driver.get(baseFormUrl);*/
+		driver.get(baseFormUrl);
 		
 		/* HEADLESS Chrome Browser */
-		System.setProperty("webdriver.chrome.driver", driverPath);
+		/*System.setProperty("webdriver.chrome.driver", driverPath);
 		// Add options to Google Chrome. The window-size is important for responsive sites
 		ChromeOptions options = new ChromeOptions();
 		options.addArguments("headless");
@@ -53,7 +53,7 @@ public class conversario {
 		//options.addArguments("--ppapi-flash-path=/usr/lib/adobe-flashplugin/libpepflashplayer.so");
 		options.addArguments("--no-sandbox");
 		driver = new ChromeDriver(options);
-		driver.get(baseFormUrl);
+		driver.get(baseFormUrl);*/
 	}
 	
 	
@@ -85,9 +85,14 @@ public class conversario {
 		//Bitte ein Bild von der heiligen Magdalena. (vor-, nach-, waehrend der Suende?)
 		
 		driver.findElement(By.xpath("//button[@value='Abschicken'][@name='savecomment'][@type='submit']")).click();
-		
 		try {
 			Thread.sleep(2000);
+		} catch (InterruptedException e) { 
+			e.printStackTrace();
+		}
+		driver.findElement(By.xpath("//button[@value='Abschicken'][@name='savecomment'][@type='submit']")).click();
+		try {
+			Thread.sleep(20000);
 		} catch (InterruptedException e) { 
 			e.printStackTrace();
 		}
@@ -103,7 +108,7 @@ public class conversario {
 
 		System.out.println("NiceNr:" + expectedString);
 		int i;
-		for (i=1; i<=10; i++) {
+		for (i=1; i<=20; i++) {
 			try {
 				Thread.sleep(2000);
 			} catch (InterruptedException e) { 
@@ -122,8 +127,8 @@ public class conversario {
 
 		AssertJUnit.assertTrue(s2text.contains(expectedString));	
 	} 
-	
-	
+
+
 	@Test(priority = 2)
 	public void sendBadComment() { 	
 		driver.get(baseFormUrl);	
@@ -145,7 +150,12 @@ public class conversario {
 		(new Actions(driver)).sendKeys("BadComment-"+ BadNr +": Das ist ein boeser Kommentar, mit Schimpfwoertern wie damisch depp depperter oder Doldi mit einer Drudschen an der Spitzen.").perform();
 		
 		driver.findElement(By.xpath("//button[@value='Abschicken'][@name='savecomment'][@type='submit']")).click();
-		
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) { 
+			e.printStackTrace();
+		}
+		driver.findElement(By.xpath("//button[@value='Abschicken'][@name='savecomment'][@type='submit']")).click();
 		try {
 			Thread.sleep(2000);
 		} catch (InterruptedException e) { 
