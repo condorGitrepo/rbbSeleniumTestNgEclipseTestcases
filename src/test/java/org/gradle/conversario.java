@@ -40,12 +40,12 @@ public class conversario {
 	public void launchBrowser() {
 		
 		/* VISUALIZE Chrome Browser */
-		System.setProperty("webdriver.chrome.driver", driverPath);
+		/*System.setProperty("webdriver.chrome.driver", driverPath);
 		driver = new ChromeDriver(); 
-		driver.get(baseFormUrl);
+		driver.get(baseFormUrl);*/
 		
 		/* HEADLESS Chrome Browser */
-		/*System.setProperty("webdriver.chrome.driver", driverPath);
+		System.setProperty("webdriver.chrome.driver", driverPath);
 		// Add options to Google Chrome. The window-size is important for responsive sites
 		ChromeOptions options = new ChromeOptions();
 		options.addArguments("headless");
@@ -53,7 +53,7 @@ public class conversario {
 		//options.addArguments("--ppapi-flash-path=/usr/lib/adobe-flashplugin/libpepflashplayer.so");
 		options.addArguments("--no-sandbox");
 		driver = new ChromeDriver(options);
-		driver.get(baseFormUrl);*/
+		driver.get(baseFormUrl);
 	}
 	
 	
